@@ -1,19 +1,20 @@
 import { authMiddleware } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 
+import type { Role } from './types';
+
 export default authMiddleware({
   afterAuth(auth, req) {
-    // Redirect to Dashboard if user is logged in and has not completed Onboarding process.
-    const metadata = auth.sessionClaims?.metadata as Record<
-      string,
-      string | number | undefined
-    >;
+    const metadata = (auth.sessionClaims as CustomJwtSessionClaims)?.metadata;
 
+    const registered = !!auth.userId && !!metadata?.role;
+    const role = registered ? (metadata?.role as Role) : null;
+
+    // Redirect to Dashboard if user is logged in and has not completed Onboarding process.
     if (
-      auth.userId &&
-      req.nextUrl.pathname !== '/dashboard' &&
+      !registered &&
       !auth.isPublicRoute &&
-      !metadata?.role
+      req.nextUrl.pathname !== '/dashboard'
     ) {
       const dashboard = new URL('/dashboard', req.url);
       return NextResponse.redirect(dashboard);
