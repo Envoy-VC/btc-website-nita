@@ -4,11 +4,19 @@ import { NextResponse } from 'next/server';
 export default authMiddleware({
   afterAuth(auth, req) {
     // Redirect to Dashboard if user is logged in and has not completed Onboarding process.
-    const publicMetadata = auth.user?.publicMetadata;
-    if (auth.userId && !publicMetadata?.role) {
-      const url = req.nextUrl.clone();
-      url.pathname = '/dashboard';
-      return NextResponse.redirect(url);
+    const metadata = auth.sessionClaims?.metadata as Record<
+      string,
+      string | number | undefined
+    >;
+
+    if (
+      auth.userId &&
+      req.nextUrl.pathname !== '/dashboard' &&
+      !auth.isPublicRoute &&
+      !metadata?.role
+    ) {
+      const dashboard = new URL('/dashboard', req.url);
+      return NextResponse.redirect(dashboard);
     }
   },
   beforeAuth(req) {
