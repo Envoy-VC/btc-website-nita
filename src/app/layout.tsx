@@ -2,6 +2,8 @@ import '~/styles/globals.css';
 
 import { Inter } from 'next/font/google';
 
+import { Toaster } from 'react-hot-toast';
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
@@ -20,7 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      <body className={`font-sans ${inter.variable}`}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
