@@ -3,7 +3,7 @@ import '~/styles/globals.css';
 import { Inter } from 'next/font/google';
 
 import { Toaster } from 'react-hot-toast';
-import { ClerkProvider } from '@clerk/nextjs';
+import { ClerkProvider, ClerkLoaded } from '@clerk/nextjs';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -25,8 +25,10 @@ export default function RootLayout({
     <html lang='en'>
       <ClerkProvider>
         <body className={`font-sans ${inter.variable}`}>
-          {children}
-          <Toaster />
+          <ClerkLoaded>
+            {children}
+            <Toaster />
+          </ClerkLoaded>
         </body>
       </ClerkProvider>
     </html>
