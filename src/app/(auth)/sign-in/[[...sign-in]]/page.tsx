@@ -4,7 +4,7 @@ import { SignIn } from '@clerk/nextjs';
 const SignInPage = () => {
   return (
     <div className='flex min-h-screen w-full flex-col lg:flex-row'>
-      <div className='h-[40dvh] w-full bg-gradient-to-r from-blue-400 to-purple-300 lg:min-h-screen lg:basis-1/3' />
+      <div className='h-[40dvh] w-full bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500 lg:min-h-screen lg:basis-1/3' />
 
       <div className='flex w-full flex-col items-center justify-between lg:basis-2/3 lg:flex-row'>
         <SignIn
@@ -13,7 +13,7 @@ const SignInPage = () => {
               formButtonPrimary: 'bg-primary hover:bg-secondary',
               footerActionLink: 'text-secondary hover:text-primary',
               footerAction: 'hidden',
-              card: 'mx-0 w-[22rem] gap-2 sm:w-[24rem] sm:gap-8 lg:-translate-x-1/2 translate-x-0 -translate-y-1/2 lg:translate-y-0',
+              card: 'mx-0 w-[22rem] gap-2 sm:w-[28rem] sm:gap-8 lg:-translate-x-1/2 translate-x-0 -translate-y-1/2 lg:translate-y-0 sm:h-[40rem]',
             },
           }}
         />
@@ -34,7 +34,7 @@ const SignInPage = () => {
             </div>
           </div>
         </div>
-        <div className='hidden w-full max-w-[16rem] text-transparent lg:flex'>
+        <div className='hidden w-full max-w-[10rem] text-transparent lg:flex'>
           a
         </div>
       </div>
