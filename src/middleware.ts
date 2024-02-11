@@ -8,15 +8,24 @@ export default authMiddleware({
     const metadata = (auth.sessionClaims as CustomJwtSessionClaims)?.metadata;
 
     const registered = !!auth.userId && !!metadata?.role;
-    const role = registered ? (metadata?.role as Role) : null;
 
-    // Redirect to Dashboard if user is logged in and has not completed Onboarding process.
+    if (!auth.userId && req.nextUrl.pathname === '/onboarding') {
+      const home = new URL('/', req.url);
+      return NextResponse.redirect(home);
+    }
+
+    if (registered && req.nextUrl.pathname === '/onboarding') {
+      const home = new URL('/', req.url);
+      return NextResponse.redirect(home);
+    }
+
+    // Redirect to Onboarding Screen if user is logged in and has not completed Onboarding process.
     if (
       !registered &&
       !auth.isPublicRoute &&
-      req.nextUrl.pathname !== '/dashboard'
+      req.nextUrl.pathname !== '/onboarding'
     ) {
-      const dashboard = new URL('/dashboard', req.url);
+      const dashboard = new URL('/onboarding', req.url);
       return NextResponse.redirect(dashboard);
     }
   },
@@ -31,7 +40,7 @@ export default authMiddleware({
       },
     });
   },
-  publicRoutes: ['/'],
+  publicRoutes: ['/', /^\/api.*$/],
 });
 
 export const config = {

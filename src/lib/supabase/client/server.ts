@@ -5,6 +5,8 @@ import { auth } from '@clerk/nextjs';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
+import type { Database } from '~/types/database';
+
 import { env } from '~/env';
 
 const createSupabaseServerClient = async () => {
@@ -22,7 +24,7 @@ const createSupabaseServerClient = async () => {
     },
   };
 
-  const supabase = createServerClient(
+  const supabase = createServerClient<Database>(
     env.NEXT_PUBLIC_SUPABASE_URL,
     env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {

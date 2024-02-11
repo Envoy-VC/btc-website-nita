@@ -22,7 +22,7 @@ export default function RootLayout({
         <body className={`${GeistSans.className}`}>
           <ClerkLoaded>
             {children}
-            <Toaster />
+            <Toaster position='bottom-right' />
           </ClerkLoaded>
         </body>
       </ClerkProvider>
