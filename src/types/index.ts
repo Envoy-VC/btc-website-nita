@@ -1,7 +1,9 @@
 export enum Role {
-  OWNER = 0,
+  USER = 0,
+  VOLUNTEER,
+  CLUB_MEMBER,
   CLUB_OWNER,
-  USER,
+  OWNER,
 }
 
 import { type MergeDeep } from 'type-fest';

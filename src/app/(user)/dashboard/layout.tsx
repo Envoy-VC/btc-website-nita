@@ -1,5 +1,5 @@
 import '~/styles/globals.css';
-import { Sidebar } from '../components';
+import { DashboardNavbar, Sidebar } from '../components';
 import MobileNavbar from '../components/sidebar/mobile';
 
 export const metadata = {
@@ -14,10 +14,13 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-col lg:flex-row'>
       <Sidebar />
       <MobileNavbar />
-      <div className='ml-[16rem]'>{children}</div>
+      <div className='flex w-full flex-col lg:ml-[16rem]'>
+        <DashboardNavbar />
+        {children}
+      </div>
     </div>
   );
 }

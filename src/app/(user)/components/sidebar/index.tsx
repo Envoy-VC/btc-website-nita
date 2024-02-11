@@ -1,11 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { headers } from 'next/headers';
 
 import { Separator } from '~/components/ui/separator';
-
-import { cn } from '~/lib/utils';
 
 import {
   HiOutlineTicket,
@@ -17,29 +14,8 @@ import { HiOutlineExternalLink } from 'react-icons/hi';
 import { IoHelpBuoy } from 'react-icons/io5';
 import { RxDashboard } from 'react-icons/rx';
 import { BTCLogo } from '~/assets';
-import { Button } from '~/components/ui/button';
 
-export const DashboardItem = ({ name, Icon, href }: (typeof items)[number]) => {
-  const headersList = headers();
-  const path = headersList.get('x-pathname');
-  return (
-    <Button
-      asChild
-      variant='ghost'
-      className={cn(
-        'flex w-full flex-row items-start justify-start gap-2',
-        path === href
-          ? 'bg-primary text-gray-100 hover:bg-primary hover:text-gray-100 hover:opacity-95'
-          : 'bg-white text-neutral-600'
-      )}
-    >
-      <Link href={href} className='flex flex-row items-center gap-2'>
-        <Icon size={20} />
-        <span className=''>{name}</span>
-      </Link>
-    </Button>
-  );
-};
+import DashboardItem from './pill';
 
 export const HelpCard = () => {
   return (
@@ -64,7 +40,7 @@ export const HelpCard = () => {
 
 const Sidebar = () => {
   return (
-    <div className='fixed hidden h-full max-h-screen w-full max-w-[16rem] border-2 p-2 lg:block'>
+    <div className='fixed hidden h-full max-h-screen w-full max-w-[16rem] border-r-[1px] border-neutral-200 p-2 lg:block'>
       <div className='flex h-full flex-col justify-between'>
         <div className='flex flex-col'>
           <Link href='/' className='flex items-center gap-3'>
@@ -88,7 +64,11 @@ const Sidebar = () => {
           <div className='flex flex-col justify-between gap-1 py-4'>
             <div>
               {items.map((item) => (
-                <DashboardItem key={item.name} {...item} />
+                <DashboardItem
+                  key={item.name}
+                  name={item.name}
+                  href={item.href}
+                />
               ))}
             </div>
           </div>
