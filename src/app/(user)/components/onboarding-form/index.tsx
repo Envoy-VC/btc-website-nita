@@ -106,7 +106,7 @@ const OnboardingForm = ({ email_id, user_id }: Props) => {
         error: 'User creation failed',
       })
       .then(() => {
-        router.push('/');
+        router.replace('/');
       });
   };
   return (

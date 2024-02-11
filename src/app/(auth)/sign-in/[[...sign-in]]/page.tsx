@@ -8,6 +8,7 @@ const SignInPage = () => {
 
       <div className='flex w-full flex-col items-center justify-between lg:basis-2/3 lg:flex-row'>
         <SignIn
+          redirectUrl='/dashboard'
           appearance={{
             elements: {
               formButtonPrimary: 'bg-primary hover:bg-secondary',
