@@ -7,7 +7,7 @@ import NextTopLoader from 'nextjs-toploader';
 const PageProgress = () => {
   return (
     <NextTopLoader
-      color='#3b9ada'
+      color='#007DFF'
       initialPosition={0.08}
       crawlSpeed={200}
       height={3}

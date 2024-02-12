@@ -4,14 +4,15 @@ import { NextResponse } from 'next/server';
 export default authMiddleware({
   afterAuth(auth, req) {
     const metadata = (auth.sessionClaims as CustomJwtSessionClaims)?.metadata;
+    const registered = !!auth.userId && metadata?.role !== undefined;
 
-    const registered = !!auth.userId && !!String(metadata?.role);
-
+    // Redirect to Home Screen if user is not logged in and trying to access Onboarding Screen.
     if (!auth.userId && req.nextUrl.pathname === '/onboarding') {
       const home = new URL('/', req.url);
       return NextResponse.redirect(home);
     }
 
+    // Redirect to Home Screen if user is logged in and has completed Onboarding process.
     if (registered && req.nextUrl.pathname === '/onboarding') {
       const home = new URL('/', req.url);
       return NextResponse.redirect(home);

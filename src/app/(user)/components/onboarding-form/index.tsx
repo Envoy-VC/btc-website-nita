@@ -238,7 +238,7 @@ const OnboardingForm = ({ email_id, user_id }: Props) => {
             disabled={form.formState.isSubmitting}
             name='branch'
             render={({ field }) => (
-              <FormItem className='flex w-full max-w-sm flex-col'>
+              <FormItem className='flex w-full flex-col sm:max-w-sm'>
                 <FormLabel>Branch</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
