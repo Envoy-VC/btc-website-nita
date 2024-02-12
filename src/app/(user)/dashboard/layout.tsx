@@ -19,7 +19,7 @@ export default function DashboardLayout({
       <MobileNavbar />
       <div className='flex w-full flex-col lg:ml-[16rem]'>
         <DashboardNavbar />
-        {children}
+        <div className='px-3 py-6 sm:px-6 sm:py-10 md:px-12'>{children}</div>
       </div>
     </div>
   );

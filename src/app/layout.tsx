@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { ClerkProvider, ClerkLoaded } from '@clerk/nextjs';
 
 import { GeistSans } from 'geist/font/sans';
+import { PageProgress } from '~/components';
 
 export const metadata = {
   title: 'Create T3 App',
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang='en'>
       <ClerkProvider>
         <body className={`${GeistSans.className}`}>
+          <PageProgress />
           <ClerkLoaded>
             {children}
             <Toaster position='bottom-right' />

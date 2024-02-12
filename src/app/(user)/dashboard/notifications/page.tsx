@@ -10,7 +10,7 @@ const Notifications = async () => {
   });
 
   return (
-    <div className='px-3 py-6 sm:px-6 sm:py-10 md:px-12'>
+    <>
       <DashboardHeader
         title='Notifications'
         description='Configure how you receive notifications.'
@@ -23,7 +23,7 @@ const Notifications = async () => {
           server_social_emails={user.social_emails}
         />
       )}
-    </div>
+    </>
   );
 };
 
