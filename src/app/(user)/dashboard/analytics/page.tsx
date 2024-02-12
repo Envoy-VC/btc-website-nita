@@ -1,7 +1,13 @@
 import React from 'react';
 
+import { ComingSoonScreen } from '~/screens';
+
 const Analytics = () => {
-  return <div>Analytics</div>;
+  return (
+    <div>
+      <ComingSoonScreen />
+    </div>
+  );
 };
 
 export default Analytics;

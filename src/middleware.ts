@@ -1,13 +1,11 @@
 import { authMiddleware } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 
-import type { Role } from './types';
-
 export default authMiddleware({
   afterAuth(auth, req) {
     const metadata = (auth.sessionClaims as CustomJwtSessionClaims)?.metadata;
 
-    const registered = !!auth.userId && !!metadata?.role;
+    const registered = !!auth.userId && !!String(metadata?.role);
 
     if (!auth.userId && req.nextUrl.pathname === '/onboarding') {
       const home = new URL('/', req.url);

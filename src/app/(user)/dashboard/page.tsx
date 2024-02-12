@@ -44,10 +44,10 @@ const Dashboard = () => {
         />
       </div>
       <div className='flex flex-col gap-4 py-6 lg:flex-row'>
-        <div className='flex w-full flex-1 basis-1/2'>
+        <div className='flex w-full flex-1 basis-3/5'>
           <Overview />
         </div>
-        <div className='flex w-full flex-1 basis-1/2'>
+        <div className='flex w-full flex-1 basis-2/5'>
           <UpcomingEvents />
         </div>
       </div>

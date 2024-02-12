@@ -1,12 +1,14 @@
-import { SignOutButton } from '@clerk/nextjs';
-import { currentUser } from '@clerk/nextjs';
+import React from 'react';
 
-export default async function HomePage() {
-  const user = await currentUser();
+import { Navbar } from '~/components';
+
+const Home = () => {
   return (
     <div>
-      {JSON.stringify(user, null, 2)}
-      <SignOutButton>SignOut</SignOutButton>
+      <Navbar />
+      Home
     </div>
   );
-}
+};
+
+export default Home;
