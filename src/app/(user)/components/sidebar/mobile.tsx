@@ -20,10 +20,11 @@ import { BTCLogo } from '~/assets';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import { HelpCard } from './index';
 import { ActionBar } from '../nav';
+import Link from 'next/link';
 
 const MobileNavbar = () => {
   return (
-    <div className='block w-full border-2 px-4 py-3 lg:hidden'>
+    <div className='fixed top-0 z-[10] block w-full border-2 bg-white px-4 py-3 lg:hidden'>
       <div className='flex flex-row items-center justify-between gap-2'>
         <div className='flex flex-row items-center gap-2'>
           <Sheet>
@@ -68,13 +69,15 @@ const MobileNavbar = () => {
               </div>
             </SheetContent>
           </Sheet>
-          <Image
-            src={BTCLogo.src}
-            alt='BTC Logo'
-            width={36}
-            height={36}
-            className='rounded-full'
-          />
+          <Link href='/'>
+            <Image
+              src={BTCLogo.src}
+              alt='BTC Logo'
+              width={36}
+              height={36}
+              className='rounded-full'
+            />
+          </Link>
         </div>
         <div className='flex lg:hidden'>
           <ActionBar />

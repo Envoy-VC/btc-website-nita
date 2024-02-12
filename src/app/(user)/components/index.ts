@@ -7,6 +7,7 @@ import CalendarDateRangePicker from './date-range-picker';
 import MetricCard from './metric-card';
 import Overview from './overview';
 import UpcomingEvents from './upcoming-events';
+import EventTabs from './event-tabs';
 
 export {
   Sidebar,
@@ -18,4 +19,5 @@ export {
   MetricCard,
   Overview,
   UpcomingEvents,
+  EventTabs,
 };

@@ -17,9 +17,11 @@ export default function DashboardLayout({
     <div className='flex flex-col lg:flex-row'>
       <Sidebar />
       <MobileNavbar />
-      <div className='flex w-full flex-col lg:ml-[16rem]'>
+      <div className='mt-16 flex w-full flex-col lg:ml-[16rem] lg:mt-0'>
         <DashboardNavbar />
-        <div className='px-3 py-6 sm:px-6 sm:py-10 md:px-12'>{children}</div>
+        <div className='px-3 py-6 sm:px-6 sm:py-10 md:px-12 lg:mt-16'>
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -52,13 +52,13 @@ const DashboardNavbar = async () => {
     }
   };
   return (
-    <div className='hidden w-full border-b-[1px] border-neutral-200 p-5 lg:flex'>
+    <div className='fixed top-0 z-[10] hidden w-full border-b-[1px] border-neutral-200 bg-white p-5 pr-[18rem] lg:flex'>
       <div className='flex w-full flex-row items-center justify-between'>
         <div className='text-xl font-medium text-neutral-700'>
           {greetings()}, {user?.firstName} 👋
         </div>
         <SearchBox />
-        <div className='hidden md:flex'>
+        <div className='hidden lg:flex  '>
           <ActionBar />
         </div>
       </div>

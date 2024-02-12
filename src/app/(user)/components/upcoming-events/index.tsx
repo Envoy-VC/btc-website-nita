@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
+import { ScrollArea } from '~/components/ui/scroll-area';
 
 const UpcomingEvents = () => {
   return (
@@ -9,13 +10,13 @@ const UpcomingEvents = () => {
         <CardTitle>Upcoming Events</CardTitle>
       </CardHeader>
       <CardContent className='pl-2'>
-        <div className='flex flex-col gap-2 px-4'>
-          {Array(5)
+        <ScrollArea className='flex max-h-96 flex-col gap-2 px-4'>
+          {Array(16)
             .fill(true)
             .map((event, index) => (
               <EventPill key={`event-${index}`} />
             ))}
-        </div>
+        </ScrollArea>
       </CardContent>
     </Card>
   );
