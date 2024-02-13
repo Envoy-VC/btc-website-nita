@@ -12,6 +12,7 @@ export type Database = {
     Tables: {
       clubs: {
         Row: {
+          banner_image_url: string;
           category: string;
           club_id: string;
           club_name: string;
@@ -27,6 +28,7 @@ export type Database = {
           website: string;
         };
         Insert: {
+          banner_image_url?: string;
           category?: string;
           club_id: string;
           club_name?: string;
@@ -42,6 +44,7 @@ export type Database = {
           website?: string;
         };
         Update: {
+          banner_image_url?: string;
           category?: string;
           club_id?: string;
           club_name?: string;

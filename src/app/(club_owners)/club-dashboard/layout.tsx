@@ -10,7 +10,7 @@ import { clubDashboardSidebarNavItems as items } from '~/lib/data';
 
 const ClubDashboardLayout = ({ children }: React.PropsWithChildren) => {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col lg:flex-row'>
       <Sidebar items={items} />
       <MobileNavbar items={items} />
       <RoleProtect role={Role.CLUB_OWNER}>
