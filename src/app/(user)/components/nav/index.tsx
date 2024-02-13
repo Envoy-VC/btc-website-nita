@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { SignOutButton, currentUser } from '@clerk/nextjs';
 import SearchBox from './search';
 
 import { Button } from '~/components/ui/button';
 import { Avatar, AvatarImage } from '~/components/ui/avatar';
+import { Skeleton } from '~/components/ui/skeleton';
 
 export const revalidate = 3600;
 
@@ -77,7 +78,7 @@ export const ActionBar = async () => {
   );
 };
 
-const DashboardNavbar = async () => {
+const UserGreetings = async () => {
   const user = await currentUser();
 
   const greetings = (): string => {
@@ -85,21 +86,32 @@ const DashboardNavbar = async () => {
     const hour = date.getHours();
     if (hour < 12) {
       return 'Good Morning';
-    } else if (hour < 18) {
+    } else if (hour <= 17) {
       return 'Good Afternoon';
     } else {
       return 'Good Evening';
     }
   };
+
+  return (
+    <div className='text-xl font-medium text-neutral-700'>
+      {greetings()}, {user?.firstName} 👋
+    </div>
+  );
+};
+
+const DashboardNavbar = () => {
   return (
     <div className='fixed top-0 z-[10] hidden w-full border-b-[1px] border-neutral-200 bg-white p-5 pr-[18rem] lg:flex'>
       <div className='flex w-full flex-row items-center justify-between'>
-        <div className='text-xl font-medium text-neutral-700'>
-          {greetings()}, {user?.firstName} 👋
-        </div>
+        <Suspense fallback={<Skeleton className='h-12 w-full max-w-sm' />}>
+          <UserGreetings />
+        </Suspense>
         <SearchBox />
-        <div className='hidden lg:flex  '>
-          <ActionBar />
+        <div className='hidden lg:flex'>
+          <Suspense fallback={<Skeleton className='h-4 w-full max-w-xs' />}>
+            <ActionBar />
+          </Suspense>
         </div>
       </div>
     </div>

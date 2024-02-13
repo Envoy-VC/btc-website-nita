@@ -13,9 +13,8 @@ interface Props extends React.PropsWithChildren {
 }
 
 const RoleProtect = ({ children, role }: Props) => {
-  const { sessionClaims, userId } = auth();
+  const { sessionClaims } = auth();
   const metadata = (sessionClaims as CustomJwtSessionClaims)?.metadata;
-  const registered = !!userId && metadata?.role !== undefined;
   const currentRole = metadata?.role as Role;
 
   if (currentRole >= role) {

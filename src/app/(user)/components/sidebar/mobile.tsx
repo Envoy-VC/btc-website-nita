@@ -13,8 +13,6 @@ import {
 import { Separator } from '~/components/ui/separator';
 import { Button } from '~/components/ui/button';
 
-import { items } from '.';
-
 // Assets
 import { BTCLogo } from '~/assets';
 import { HiMenuAlt2 } from 'react-icons/hi';
@@ -22,7 +20,13 @@ import { HelpCard } from './index';
 import { ActionBar } from '../nav';
 import Link from 'next/link';
 
-const MobileNavbar = () => {
+import type { SideNavItem } from '~/types';
+
+interface Props {
+  items: SideNavItem[];
+}
+
+const MobileNavbar = ({ items }: Props) => {
   return (
     <div className='fixed top-0 z-[10] block w-full border-2 bg-white px-4 py-3 lg:hidden'>
       <div className='flex flex-row items-center justify-between gap-2'>

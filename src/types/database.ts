@@ -10,6 +10,62 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      clubs: {
+        Row: {
+          category: string;
+          club_id: string;
+          club_name: string;
+          cover_photo_url: string;
+          description: string;
+          email: string;
+          founding_year: number;
+          is_public: boolean;
+          logo_url: string;
+          members: string[];
+          owner_id: string;
+          social_media_links: Json;
+          website: string;
+        };
+        Insert: {
+          category?: string;
+          club_id: string;
+          club_name?: string;
+          cover_photo_url?: string;
+          description?: string;
+          email?: string;
+          founding_year?: number;
+          is_public?: boolean;
+          logo_url?: string;
+          members?: string[];
+          owner_id?: string;
+          social_media_links?: Json;
+          website?: string;
+        };
+        Update: {
+          category?: string;
+          club_id?: string;
+          club_name?: string;
+          cover_photo_url?: string;
+          description?: string;
+          email?: string;
+          founding_year?: number;
+          is_public?: boolean;
+          logo_url?: string;
+          members?: string[];
+          owner_id?: string;
+          social_media_links?: Json;
+          website?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'clubs_owner_id_fkey';
+            columns: ['owner_id'];
+            isOneToOne: true;
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       users: {
         Row: {
           branch: string;

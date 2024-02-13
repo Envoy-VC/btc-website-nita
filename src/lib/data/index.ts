@@ -1,3 +1,13 @@
+import {
+  HiOutlineTicket,
+  HiOutlineUserCircle,
+  HiOutlineBell,
+  HiOutlineChartSquareBar,
+} from 'react-icons/hi';
+import { RxDashboard } from 'react-icons/rx';
+
+import type { SideNavItem } from '~/types';
+
 export const collegeNames = [
   'National Institute of Technology, Agartala',
   'Indian Institute of Information Technology, Agartala',
@@ -21,4 +31,68 @@ export const branches = [
   'Information Technology',
   'Production Engineering',
   'Physics',
+];
+
+export const userSideNavItems: SideNavItem[] = [
+  {
+    name: 'Dashboard',
+    Icon: RxDashboard,
+    href: '/dashboard',
+  },
+  {
+    name: 'Events',
+    Icon: HiOutlineTicket,
+    href: '/dashboard/events',
+  },
+  {
+    name: 'Notifications',
+    Icon: HiOutlineBell,
+    href: '/dashboard/notifications',
+  },
+  {
+    name: 'Analytics',
+    Icon: HiOutlineChartSquareBar,
+    href: '/dashboard/analytics',
+  },
+  {
+    name: 'Account',
+    Icon: HiOutlineUserCircle,
+    href: '/dashboard/account',
+  },
+];
+
+import {
+  PiUsersThreeBold,
+  PiScrollBold,
+  PiCalendarPlusBold,
+  PiCalendarBlankBold,
+  PiFilePlusBold,
+} from 'react-icons/pi';
+
+export const clubDashboardSidebarNavItems: SideNavItem[] = [
+  {
+    name: 'Club Details',
+    Icon: PiUsersThreeBold,
+    href: '/club-dashboard',
+  },
+  {
+    name: 'Events',
+    Icon: PiCalendarBlankBold,
+    href: '/club-dashboard/events',
+  },
+  {
+    name: 'Forms',
+    Icon: PiScrollBold,
+    href: '/club-dashboard/forms',
+  },
+  {
+    name: 'Create Event',
+    Icon: PiCalendarPlusBold,
+    href: '/club-dashboard/create-event',
+  },
+  {
+    name: 'Create Form',
+    Icon: PiFilePlusBold,
+    href: '/club-dashboard/events',
+  },
 ];

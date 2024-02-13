@@ -3,18 +3,12 @@
 import React from 'react';
 import Link from 'next/link';
 
-import {
-  HiOutlineTicket,
-  HiOutlineUserCircle,
-  HiOutlineBell,
-  HiOutlineChartSquareBar,
-} from 'react-icons/hi';
-import { RxDashboard } from 'react-icons/rx';
-
 import { usePathname } from 'next/navigation';
 
 import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
+
+import { userSideNavItems, clubDashboardSidebarNavItems } from '~/lib/data';
 
 interface Props {
   name: string;
@@ -23,7 +17,9 @@ interface Props {
 
 const DashboardItem = ({ name, href }: Props) => {
   const path = usePathname();
-  const Icon = items.find((item) => item.name === name)!.Icon;
+  const Icon = [...userSideNavItems, ...clubDashboardSidebarNavItems].find(
+    (item) => item.name === name
+  )!.Icon;
   return (
     <Button
       asChild
@@ -42,33 +38,5 @@ const DashboardItem = ({ name, href }: Props) => {
     </Button>
   );
 };
-
-export const items = [
-  {
-    name: 'Dashboard',
-    Icon: RxDashboard,
-    href: '/dashboard',
-  },
-  {
-    name: 'Events',
-    Icon: HiOutlineTicket,
-    href: '/dashboard/events',
-  },
-  {
-    name: 'Notifications',
-    Icon: HiOutlineBell,
-    href: '/dashboard/notifications',
-  },
-  {
-    name: 'Analytics',
-    Icon: HiOutlineChartSquareBar,
-    href: '/dashboard/analytics',
-  },
-  {
-    name: 'Account',
-    Icon: HiOutlineUserCircle,
-    href: '/dashboard/account',
-  },
-];
 
 export default DashboardItem;

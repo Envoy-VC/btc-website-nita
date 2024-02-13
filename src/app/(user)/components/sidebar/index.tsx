@@ -3,19 +3,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Separator } from '~/components/ui/separator';
+import DashboardItem from './pill';
 
-import {
-  HiOutlineTicket,
-  HiOutlineUserCircle,
-  HiOutlineBell,
-  HiOutlineChartSquareBar,
-} from 'react-icons/hi';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 import { IoHelpBuoy } from 'react-icons/io5';
-import { RxDashboard } from 'react-icons/rx';
 import { BTCLogo } from '~/assets';
 
-import DashboardItem from './pill';
+import type { SideNavItem } from '~/types';
 
 export const HelpCard = () => {
   return (
@@ -38,7 +32,11 @@ export const HelpCard = () => {
   );
 };
 
-const Sidebar = () => {
+interface Props {
+  items: SideNavItem[];
+}
+
+const Sidebar = ({ items }: Props) => {
   return (
     <div className='fixed hidden h-full max-h-screen w-full max-w-[16rem] border-r-[1px] border-neutral-200 p-2 lg:block'>
       <div className='flex h-full flex-col justify-between'>
@@ -80,33 +78,5 @@ const Sidebar = () => {
     </div>
   );
 };
-
-export const items = [
-  {
-    name: 'Dashboard',
-    Icon: RxDashboard,
-    href: '/dashboard',
-  },
-  {
-    name: 'Events',
-    Icon: HiOutlineTicket,
-    href: '/dashboard/events',
-  },
-  {
-    name: 'Notifications',
-    Icon: HiOutlineBell,
-    href: '/dashboard/notifications',
-  },
-  {
-    name: 'Analytics',
-    Icon: HiOutlineChartSquareBar,
-    href: '/dashboard/analytics',
-  },
-  {
-    name: 'Account',
-    Icon: HiOutlineUserCircle,
-    href: '/dashboard/account',
-  },
-];
 
 export default Sidebar;
