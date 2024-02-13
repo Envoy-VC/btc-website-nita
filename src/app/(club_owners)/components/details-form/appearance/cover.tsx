@@ -68,7 +68,7 @@ const CoverImageUpload = ({
             src={
               image ??
               (currentCover !== ''
-                ? currentCover
+                ? `${currentCover}?${Date.now()}`
                 : 'https://placehold.co/1200x630@3x.png?text=Cover+Image+\n(1200x630)') ??
               'https://placehold.co/1200x630@3x.png?text=Cover+Image+\n(1200x630)'
             }

@@ -67,7 +67,7 @@ const BannerImageUpload = ({
             src={
               image ??
               (currentBanner !== ''
-                ? currentBanner
+                ? `${currentBanner}?${Date.now()}`
                 : 'https://placehold.co/1200x630@3x.png?text=Banner+Image+\n(1200x300)') ??
               'https://placehold.co/1200x630@3x.png?text=Banner+Image+\n(1200x300)'
             }

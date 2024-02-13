@@ -60,7 +60,7 @@ const LogoImageUpload = ({ name, value, ref, control, currentLogo }: Props) => {
             src={
               image ??
               (currentLogo !== ''
-                ? currentLogo
+                ? `${currentLogo}?${Date.now()}`
                 : 'https://placehold.co/300x300@3x.png?text=Logo+\n(300x300)') ??
               'https://placehold.co/300x300@3x.png?text=Logo+\n(300x300)'
             }
