@@ -4,7 +4,7 @@ import { SignIn } from '@clerk/nextjs';
 const SignInPage = () => {
   return (
     <div className='flex min-h-screen w-full flex-col lg:flex-row'>
-      <div className='h-[40dvh] w-full bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500 lg:min-h-screen lg:basis-1/3' />
+      <div className='h-[40dvh] w-full bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-[#007DFF] to-[#007DFF] lg:min-h-screen lg:basis-1/3' />
 
       <div className='flex w-full flex-col items-center justify-between lg:basis-2/3 lg:flex-row'>
         <SignIn

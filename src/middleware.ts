@@ -39,7 +39,7 @@ export default authMiddleware({
       },
     });
   },
-  publicRoutes: ['/', /^\/api.*$/],
+  publicRoutes: ['/', /^\/api.*$/, /^\/clubs.*$/, /^\/events.*$/],
 });
 
 export const config = {
