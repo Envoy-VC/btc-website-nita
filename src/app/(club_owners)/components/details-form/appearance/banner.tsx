@@ -12,6 +12,7 @@ import { AspectRatio } from '~/components/ui/aspect-ratio';
 import { HiOutlineUpload, HiOutlineSwitchHorizontal } from 'react-icons/hi';
 
 import { Button } from '~/components/ui/button';
+import { getImageLink } from '~/lib/utils';
 
 interface Props
   extends ControllerRenderProps<ClubAppearanceType, 'banner_image'> {
@@ -66,9 +67,7 @@ const BannerImageUpload = ({
           <Image
             src={
               image ??
-              (currentBanner !== ''
-                ? `${currentBanner}?${Date.now()}`
-                : 'https://placehold.co/1200x630@3x.png?text=Banner+Image+\n(1200x300)') ??
+              getImageLink(currentBanner) ??
               'https://placehold.co/1200x630@3x.png?text=Banner+Image+\n(1200x300)'
             }
             className='w-full rounded-md object-cover'

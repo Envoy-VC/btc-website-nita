@@ -12,6 +12,7 @@ import { AspectRatio } from '~/components/ui/aspect-ratio';
 import { HiOutlineUpload, HiOutlineSwitchHorizontal } from 'react-icons/hi';
 
 import { Button } from '~/components/ui/button';
+import { getImageLink } from '~/lib/utils';
 
 interface Props extends ControllerRenderProps<ClubAppearanceType, 'logo'> {
   loading?: boolean;
@@ -59,9 +60,7 @@ const LogoImageUpload = ({ name, value, ref, control, currentLogo }: Props) => {
           <Image
             src={
               image ??
-              (currentLogo !== ''
-                ? `${currentLogo}?${Date.now()}`
-                : 'https://placehold.co/300x300@3x.png?text=Logo+\n(300x300)') ??
+              getImageLink(currentLogo) ??
               'https://placehold.co/300x300@3x.png?text=Logo+\n(300x300)'
             }
             className='rounded-full object-cover'

@@ -5,10 +5,10 @@ import React from 'react';
 
 import { useAuth } from '@clerk/nextjs';
 
-import { env } from '~/env';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+
+import { AiOutlineLoading } from 'react-icons/ai';
 
 import { clubAppearanceSchema, type ClubAppearanceType } from '~/lib/zod';
 
@@ -65,7 +65,7 @@ const ClubAppearanceDetailsForm = ({ serverDetails }: Props) => {
           throw new Error('Failed to upload banner');
         }
         // @ts-expect-error outdated types
-        bannerPath = `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${bannerURI.data.fullPath}`;
+        bannerPath = `${bannerURI.data.fullPath}?${Date.now()}`;
       }
 
       if (data.cover_image) {
@@ -80,7 +80,7 @@ const ClubAppearanceDetailsForm = ({ serverDetails }: Props) => {
           throw new Error('Failed to upload cover');
         }
         // @ts-expect-error outdated types
-        coverPath = `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${coverURI.data.fullPath}`;
+        coverPath = `${coverURI.data.fullPath}?${Date.now()}`;
       }
 
       if (data.logo) {
@@ -95,7 +95,7 @@ const ClubAppearanceDetailsForm = ({ serverDetails }: Props) => {
           throw new Error('Failed to upload logo');
         }
         // @ts-expect-error outdated types
-        logoPath = `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${logoURI.data.fullPath}`;
+        logoPath = `${logoURI.data.fullPath}?${Date.now()}`;
       }
 
       await updateClubAppearanceDetails(serverDetails.club_id, {
@@ -165,7 +165,11 @@ const ClubAppearanceDetailsForm = ({ serverDetails }: Props) => {
             className='!my-4'
             disabled={form.formState.isSubmitting}
           >
-            {form.formState.isSubmitting ? 'Updating...' : 'Update'}
+            {form.formState.isSubmitting ? (
+              <AiOutlineLoading className='animate-spin text-xl' />
+            ) : (
+              'Update Details'
+            )}
           </Button>
         </form>
       </Form>

@@ -22,6 +22,8 @@ import { Textarea } from '~/components/ui/textarea';
 
 import type { Club } from '~/types';
 
+import { AiOutlineLoading } from 'react-icons/ai';
+
 interface Props {
   serverDetails: Partial<Club>;
 }
@@ -111,7 +113,17 @@ const ClubBasicDetails = ({ serverDetails }: Props) => {
               </FormItem>
             )}
           />
-          <Button type='submit'>Submit</Button>
+          <Button
+            type='submit'
+            className='!my-4'
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? (
+              <AiOutlineLoading className='animate-spin text-xl' />
+            ) : (
+              'Update Details'
+            )}
+          </Button>
         </form>
       </Form>
     </div>

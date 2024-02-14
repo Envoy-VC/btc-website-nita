@@ -171,7 +171,7 @@ const ClubSocialDetails = ({ serverDetails }: Props) => {
             {form.formState.isSubmitting ? (
               <AiOutlineLoading className='animate-spin text-xl' />
             ) : (
-              'Submit'
+              'Update Details'
             )}
           </Button>
         </div>

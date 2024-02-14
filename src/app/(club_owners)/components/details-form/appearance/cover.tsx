@@ -13,12 +13,13 @@ import { HiOutlineUpload, HiOutlineSwitchHorizontal } from 'react-icons/hi';
 
 import { Button } from '~/components/ui/button';
 import { env } from '~/env';
+import { getImageLink } from '~/lib/utils';
 
 interface Props
   extends ControllerRenderProps<ClubAppearanceType, 'cover_image'> {
   loading?: boolean;
   control: Control<ClubAppearanceType, unknown, ClubAppearanceType>;
-  currentCover?: string;
+  currentCover: string;
 }
 
 const CoverImageUpload = ({
@@ -67,9 +68,7 @@ const CoverImageUpload = ({
           <Image
             src={
               image ??
-              (currentCover !== ''
-                ? `${currentCover}?${Date.now()}`
-                : 'https://placehold.co/1200x630@3x.png?text=Cover+Image+\n(1200x630)') ??
+              getImageLink(currentCover) ??
               'https://placehold.co/1200x630@3x.png?text=Cover+Image+\n(1200x630)'
             }
             className='w-full rounded-md object-cover'
