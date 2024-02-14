@@ -3,7 +3,11 @@ import React from 'react';
 import { currentUser } from '@clerk/nextjs';
 import { getClubForOwner } from '~/lib/supabase/clubs';
 
-import { ClubBasicDetails, ClubAppearanceDetailsForm, ClubSocialDetails } from '../components';
+import {
+  ClubBasicDetails,
+  ClubAppearanceDetailsForm,
+  ClubSocialDetails,
+} from '../components';
 import { DashboardHeader } from '~/app/(user)/components';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
