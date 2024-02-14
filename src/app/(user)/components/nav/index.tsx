@@ -1,11 +1,12 @@
 import React, { Suspense } from 'react';
 
-import { SignOutButton, currentUser } from '@clerk/nextjs';
+import { SignOutButton, auth, currentUser } from '@clerk/nextjs';
 import SearchBox from './search';
 
 import { Button } from '~/components/ui/button';
 import { Avatar, AvatarImage } from '~/components/ui/avatar';
 import { Skeleton } from '~/components/ui/skeleton';
+import { HiOutlineLogout } from 'react-icons/hi';
 
 export const revalidate = 3600;
 
@@ -19,10 +20,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
+import { Role } from '~/types';
 
 export const ActionBar = async () => {
+  const { sessionClaims } = auth();
+  const role = (sessionClaims?.metadata?.role ?? 0) as Role;
   const user = await currentUser();
-
   return (
     <div className='flex flex-row items-center gap-2'>
       {!user && (
@@ -59,6 +62,11 @@ export const ActionBar = async () => {
               <DropdownMenuItem asChild>
                 <Link href='/dashboard'>Dashboard</Link>
               </DropdownMenuItem>
+              {role >= Role.CLUB_OWNER && (
+                <DropdownMenuItem asChild>
+                  <Link href='/club-dashboard'>Club Dashboard</Link>
+                </DropdownMenuItem>
+              )}
               <DropdownMenuItem asChild>
                 <Link href='/dashboard/events'>Events</Link>
               </DropdownMenuItem>
@@ -67,7 +75,12 @@ export const ActionBar = async () => {
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Button size='sm' className='w-full !text-sm'>
-                  <SignOutButton>Sign Out</SignOutButton>
+                  <SignOutButton>
+                    <div className='flex flex-row items-center gap-2'>
+                      <HiOutlineLogout className='text-lg' />
+                      Sign Out
+                    </div>
+                  </SignOutButton>
                 </Button>
               </DropdownMenuItem>
             </>
