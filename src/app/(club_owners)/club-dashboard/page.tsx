@@ -3,7 +3,7 @@ import React from 'react';
 import { currentUser } from '@clerk/nextjs';
 import { getClubForOwner } from '~/lib/supabase/clubs';
 
-import { ClubBasicDetails, ClubAppearanceDetailsForm } from '../components';
+import { ClubBasicDetails, ClubAppearanceDetailsForm, ClubSocialDetails } from '../components';
 import { DashboardHeader } from '~/app/(user)/components';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
@@ -35,6 +35,9 @@ const ClubDashboard = async () => {
           </TabsContent>
           <TabsContent value='appearance'>
             <ClubAppearanceDetailsForm serverDetails={club} />
+          </TabsContent>
+          <TabsContent value='socials'>
+            <ClubSocialDetails serverDetails={club} />
           </TabsContent>
         </Tabs>
       </div>

@@ -1,6 +1,6 @@
 'use server';
 
-import type { ClubDetailsType } from '~/lib/zod';
+import type { ClubDetailsType, ClubSocialsType } from '~/lib/zod';
 import createSupabaseServerClient from '../client/server';
 import { env } from '~/env';
 
@@ -43,6 +43,19 @@ export const updateClubAppearanceDetails = async (
 export const updateClubBasicDetails = async (
   club_id: string,
   data: ClubDetailsType
+) => {
+  const supabase = await createSupabaseServerClient();
+
+  const res = await supabase.from('clubs').update(data).eq('club_id', club_id);
+
+  if (res.error) {
+    throw new Error(res.error.message);
+  }
+};
+
+export const updateClubSocials = async (
+  club_id: string,
+  data: ClubSocialsType
 ) => {
   const supabase = await createSupabaseServerClient();
 

@@ -16,6 +16,10 @@ const config = {
         protocol: 'https',
         hostname: 'svofmwoukzjgqheplyds.supabase.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn1.iconfinder.com',
+      },
     ],
   },
 };
