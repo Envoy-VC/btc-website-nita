@@ -14,20 +14,26 @@ const EventTabs = () => {
         </TabsList>
         <TabsContent value='upcoming'>
           <div className='grid w-full gap-4 md:grid-cols-2 2xl:grid-cols-3'>
-            {Array(10)
+            <div className='px-1 py-4 font-semibold text-neutral-700'>
+              No Upcoming Events
+            </div>
+            {/* {Array(10)
               .fill(true)
               .map((event, index) => (
                 <EventCard key={index} />
-              ))}
+              ))} */}
           </div>
         </TabsContent>
         <TabsContent value='past'>
           <div className='grid w-full gap-4 md:grid-cols-2 2xl:grid-cols-3'>
-            {Array(10)
+            <div className='px-1 py-4 font-semibold text-neutral-700'>
+              No Past Events
+            </div>
+            {/* {Array(10)
               .fill(true)
               .map((event, index) => (
                 <EventCard key={index} />
-              ))}
+              ))} */}
           </div>
         </TabsContent>
       </Tabs>

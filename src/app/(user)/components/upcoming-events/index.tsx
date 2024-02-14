@@ -11,11 +11,14 @@ const UpcomingEvents = () => {
       </CardHeader>
       <CardContent className='pl-2'>
         <ScrollArea className='flex max-h-96 flex-col gap-2 px-4'>
-          {Array(16)
+          <div className='py-4 font-semibold text-neutral-700'>
+            No upcoming events
+          </div>
+          {/* {Array(16)
             .fill(true)
             .map((event, index) => (
               <EventPill key={`event-${index}`} />
-            ))}
+            ))} */}
         </ScrollArea>
       </CardContent>
     </Card>

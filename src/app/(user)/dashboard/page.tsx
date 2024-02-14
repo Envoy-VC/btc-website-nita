@@ -9,7 +9,11 @@ import {
 
 import { Separator } from '~/components/ui/separator';
 
-import { HiTrendingUp } from 'react-icons/hi';
+import {
+  HiTrendingUp,
+  HiOutlineUserCircle,
+  HiOutlineChat,
+} from 'react-icons/hi';
 
 const Dashboard = () => {
   return (
@@ -26,21 +30,21 @@ const Dashboard = () => {
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
         <MetricCard
           title='Total Events'
-          value='12'
-          subtitle='+124% from last month'
+          value='0'
+          subtitle='+0% from last month'
           Icon={HiTrendingUp}
         />
         <MetricCard
-          title='Total Events'
-          value='12'
-          subtitle='+124% from last month'
-          Icon={HiTrendingUp}
+          title='Profile Completeness'
+          value='100%'
+          subtitle=''
+          Icon={HiOutlineUserCircle}
         />
         <MetricCard
-          title='Total Events'
-          value='12'
-          subtitle='+124% from last month'
-          Icon={HiTrendingUp}
+          title='Feedback Given/Received'
+          value='0'
+          subtitle='+0% from last month'
+          Icon={HiOutlineChat}
         />
       </div>
       <div className='flex flex-col gap-4 py-6 lg:flex-row'>
