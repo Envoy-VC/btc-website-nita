@@ -18,6 +18,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from '~/components/ui/form';
 
@@ -117,6 +118,12 @@ const ClubAppearanceDetailsForm = ({ serverDetails }: Props) => {
             name='banner_image'
             render={({ field }) => (
               <FormItem>
+                <FormLabel>
+                  Banner Image{' '}
+                  <span className='text-sm text-gray-500'>
+                    (1200x300 recommended)
+                  </span>
+                </FormLabel>
                 <FormControl>
                   <BannerImageUpload
                     {...field}
@@ -133,6 +140,12 @@ const ClubAppearanceDetailsForm = ({ serverDetails }: Props) => {
             name='cover_image'
             render={({ field }) => (
               <FormItem>
+                <FormLabel>
+                  OG Cover Image{' '}
+                  <span className='text-sm text-gray-500'>
+                    (1200x630 recommended)
+                  </span>
+                </FormLabel>
                 <FormControl>
                   <CoverImageUpload
                     {...field}
@@ -149,6 +162,12 @@ const ClubAppearanceDetailsForm = ({ serverDetails }: Props) => {
             name='logo'
             render={({ field }) => (
               <FormItem>
+                <FormLabel>
+                  Logo Image{' '}
+                  <span className='text-sm text-gray-500'>
+                    (300x300 recommended)
+                  </span>
+                </FormLabel>
                 <FormControl>
                   <LogoImageUpload
                     {...field}
