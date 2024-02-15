@@ -20,6 +20,7 @@ import { BTCLogo } from '~/assets';
 import { FaInstagram, FaXTwitter, FaLinkedinIn } from 'react-icons/fa6';
 
 import type { IconType } from 'react-icons/lib';
+import { getSocialImage } from '~/lib/utils';
 
 interface ClubType {
   title: string;
@@ -121,7 +122,12 @@ const ListItem = ({ title, href, Icon }: Props) => {
           href={href}
           className='flex flex-row items-center justify-start gap-2'
         >
-          {Icon && <Icon />}
+          <Image
+            src={getSocialImage(href)}
+            alt={title}
+            width={24}
+            height={24}
+          />
           <div>{title}</div>
         </Link>
       </Button>
