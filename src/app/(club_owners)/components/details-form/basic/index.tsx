@@ -19,6 +19,7 @@ import {
 } from '~/components/ui/form';
 import { Input } from '~/components/ui/input';
 import { Textarea } from '~/components/ui/textarea';
+import { Switch } from '~/components/ui/switch';
 
 import type { Club } from '~/types';
 
@@ -32,12 +33,14 @@ import { updateClubBasicDetails } from '~/lib/supabase/clubs';
 import toast from 'react-hot-toast';
 
 const ClubBasicDetails = ({ serverDetails }: Props) => {
+  console.log(serverDetails);
   const form = useForm<ClubDetailsType>({
     resolver: zodResolver(clubDetailsSchema),
     defaultValues: {
       club_name: serverDetails.club_name,
       description: serverDetails.description,
       founding_year: serverDetails.founding_year,
+      is_public: serverDetails.is_public,
       members: [],
     },
   });
@@ -82,7 +85,6 @@ const ClubBasicDetails = ({ serverDetails }: Props) => {
                 <FormControl>
                   <Textarea
                     placeholder='Details about the club'
-                    className='resize-none'
                     rows={10}
                     {...field}
                   />
@@ -110,6 +112,21 @@ const ClubBasicDetails = ({ serverDetails }: Props) => {
                   />
                 </FormControl>
                 <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='is_public'
+            render={({ field }) => (
+              <FormItem className='flex w-fit flex-row items-center justify-between gap-4 rounded-lg border p-3'>
+                <FormLabel>Public</FormLabel>
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
               </FormItem>
             )}
           />

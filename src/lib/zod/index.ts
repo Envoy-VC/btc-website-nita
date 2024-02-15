@@ -13,6 +13,7 @@ export const clubDetailsSchema = z.object({
   description: z.string({ required_error: '' }),
   founding_year: z.number({ required_error: '' }).min(1, ''),
   members: z.array(z.string({ required_error: '' })),
+  is_public: z.boolean({ required_error: '' }),
 });
 
 export const socialSchema = z.object({
