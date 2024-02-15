@@ -64,9 +64,7 @@ export const userSideNavItems: SideNavItem[] = [
 import {
   PiUsersThreeBold,
   PiScrollBold,
-  PiCalendarPlusBold,
   PiCalendarBlankBold,
-  PiFilePlusBold,
 } from 'react-icons/pi';
 
 export const clubDashboardSidebarNavItems: SideNavItem[] = [
@@ -79,38 +77,14 @@ export const clubDashboardSidebarNavItems: SideNavItem[] = [
     name: 'Events',
     Icon: PiCalendarBlankBold,
     href: '/club-dashboard/events',
+    regexp: new RegExp(`^\/club-dashboard\/events(?:\/.*)?$`),
   },
   {
     name: 'Forms',
     Icon: PiScrollBold,
     href: '/club-dashboard/forms',
   },
-  {
-    name: 'Create Event',
-    Icon: PiCalendarPlusBold,
-    href: '/club-dashboard/create-event',
-  },
-  {
-    name: 'Create Form',
-    Icon: PiFilePlusBold,
-    href: '/club-dashboard/events',
-  },
 ];
-
-/**
- *  <CommandItem>
-              <span>Upcoming Events</span>
-            </CommandItem>
-            <CommandItem>
-              <span>Notifications</span>
-            </CommandItem>
-            <CommandItem>
-              <span>All Events</span>
-            </CommandItem>
-            <CommandItem>
-              <span>All Clubs</span>
-            </CommandItem>
- */
 
 export const commandItems = [
   {

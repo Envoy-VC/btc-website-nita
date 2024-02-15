@@ -10,6 +10,7 @@ export interface SideNavItem {
   name: string;
   href: string;
   Icon: IconType;
+  regexp?: RegExp;
 }
 
 import { type MergeDeep } from 'type-fest';
