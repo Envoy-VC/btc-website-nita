@@ -69,6 +69,84 @@ export type Database = {
           },
         ];
       };
+      events: {
+        Row: {
+          club_id: string;
+          created_at: string;
+          description: string;
+          end_datetime: string;
+          event_id: string;
+          event_image: string;
+          event_name: string;
+          feedback_form: string;
+          is_approved: boolean;
+          is_public: boolean;
+          owner_id: string | null;
+          registration_end_at: string;
+          registration_form: string;
+          registration_start_at: string;
+          rules: string;
+          start_datetime: string;
+          updated_at: string;
+          venue: string;
+        };
+        Insert: {
+          club_id: string;
+          created_at?: string;
+          description?: string;
+          end_datetime?: string;
+          event_id?: string;
+          event_image?: string;
+          event_name?: string;
+          feedback_form?: string;
+          is_approved?: boolean;
+          is_public?: boolean;
+          owner_id?: string | null;
+          registration_end_at?: string;
+          registration_form?: string;
+          registration_start_at?: string;
+          rules?: string;
+          start_datetime?: string;
+          updated_at?: string;
+          venue?: string;
+        };
+        Update: {
+          club_id?: string;
+          created_at?: string;
+          description?: string;
+          end_datetime?: string;
+          event_id?: string;
+          event_image?: string;
+          event_name?: string;
+          feedback_form?: string;
+          is_approved?: boolean;
+          is_public?: boolean;
+          owner_id?: string | null;
+          registration_end_at?: string;
+          registration_form?: string;
+          registration_start_at?: string;
+          rules?: string;
+          start_datetime?: string;
+          updated_at?: string;
+          venue?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'public_events_club_id_fkey';
+            columns: ['club_id'];
+            isOneToOne: false;
+            referencedRelation: 'clubs';
+            referencedColumns: ['club_id'];
+          },
+          {
+            foreignKeyName: 'public_events_owner_id_fkey';
+            columns: ['owner_id'];
+            isOneToOne: false;
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       users: {
         Row: {
           branch: string;
