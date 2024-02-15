@@ -30,7 +30,7 @@ export const ActionBar = async () => {
     <div className='flex flex-row items-center gap-2'>
       {!user && (
         <Button variant='primary' asChild>
-          <Link href='/sign-in'>Sign In</Link>
+          <Link href='/sign-in'>Get Started</Link>
         </Button>
       )}
       <DropdownMenu>
@@ -74,14 +74,14 @@ export const ActionBar = async () => {
                 <Link href='/dashboard/account'>Account</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Button size='sm' className='w-full !text-sm'>
-                  <SignOutButton>
+                <SignOutButton>
+                  <Button size='sm' className='w-full !text-sm'>
                     <div className='flex flex-row items-center gap-2'>
                       <HiOutlineLogout className='text-lg' />
                       Sign Out
                     </div>
-                  </SignOutButton>
-                </Button>
+                  </Button>
+                </SignOutButton>
               </DropdownMenuItem>
             </>
           )}

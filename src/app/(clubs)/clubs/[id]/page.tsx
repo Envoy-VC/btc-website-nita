@@ -2,16 +2,21 @@ import React from 'react';
 
 import { headers } from 'next/headers';
 
-const ClubPage = () => {
-  const headersList = headers();
-  const activePath = headersList.get('x-pathname');
+import { ClubDetails } from '../../components';
 
-  return (
-    <div>
-      <h1>Club Page</h1>
-      <p>Active Path: {activePath}</p>
-    </div>
-  );
+import { getActiveClubById } from '~/lib/supabase/clubs';
+
+const ClubPage = async () => {
+  const headersList = headers();
+  const path = headersList.get('x-pathname');
+  const clubId = (path ?? '').split('/').pop() ?? '';
+  const club = await getActiveClubById(clubId);
+  if (club)
+    return (
+      <div>
+        <ClubDetails club={club} />
+      </div>
+    );
 };
 
 export default ClubPage;

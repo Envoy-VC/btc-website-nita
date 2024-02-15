@@ -4,6 +4,7 @@ import ComingSoonImage from './coming-soon.jpeg';
 import NotFoundImage from './404.jpeg';
 import OnboardingImage from './onboarding.jpeg';
 import UnauthorizedImage from './unauthorized.jpg';
+import SatyaNadellaImage from './satya-nadella-image.webp';
 
 export {
   BTCLogo,
@@ -12,4 +13,5 @@ export {
   NotFoundImage,
   OnboardingImage,
   UnauthorizedImage,
+  SatyaNadellaImage,
 };

@@ -65,3 +65,30 @@ export const updateClubSocials = async (
     throw new Error(res.error.message);
   }
 };
+
+export const getActiveClubById = async (club_id: string) => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase
+    .from('clubs')
+    .select('*')
+    .eq('club_id', club_id)
+    .eq('is_public', true);
+
+  if (res.error) {
+    throw res.error;
+  }
+
+  const club = res.data.at(0);
+
+  return club ?? null;
+};
+
+export const getActiveClubs = async () => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase.from('clubs').select('*').eq('is_public', true);
+
+  if (res.error) {
+    throw res.error;
+  }
+  return res.data;
+};
