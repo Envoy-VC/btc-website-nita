@@ -96,3 +96,41 @@ export const clubDashboardSidebarNavItems: SideNavItem[] = [
     href: '/club-dashboard/events',
   },
 ];
+
+/**
+ *  <CommandItem>
+              <span>Upcoming Events</span>
+            </CommandItem>
+            <CommandItem>
+              <span>Notifications</span>
+            </CommandItem>
+            <CommandItem>
+              <span>All Events</span>
+            </CommandItem>
+            <CommandItem>
+              <span>All Clubs</span>
+            </CommandItem>
+ */
+
+export const commandItems = [
+  {
+    name: 'Upcoming Events',
+    href: '/dashboard/events',
+    Icon: PiCalendarBlankBold,
+  },
+  {
+    name: 'Notifications',
+    href: '/dashboard/notifications',
+    Icon: HiOutlineBell,
+  },
+  {
+    name: 'All Events',
+    href: '/events',
+    Icon: HiOutlineTicket,
+  },
+  {
+    name: 'All Clubs',
+    href: '/clubs',
+    Icon: PiUsersThreeBold,
+  },
+];
