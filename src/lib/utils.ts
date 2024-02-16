@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { env } from '~/env';
+import { CalendarDateTime } from '@internationalized/date';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -51,4 +52,19 @@ export const formatDate = (iso_string: string): string => {
   const amOrPm = date.getHours() >= 12 ? 'PM' : 'AM';
 
   return `${month} ${day}, ${hours}:${minutes < 10 ? '0' : ''}${minutes} ${amOrPm}`;
+};
+
+export const getCalenderDateTime = (iso_string: string): CalendarDateTime => {
+  const date = new Date(iso_string);
+  return new CalendarDateTime(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    date.getDate(),
+    date.getHours(),
+    date.getMinutes()
+  );
+};
+
+export const getISOString = (date: CalendarDateTime): string => {
+  return date.toDate('ist').toISOString();
 };

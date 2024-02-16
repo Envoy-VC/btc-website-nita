@@ -33,6 +33,7 @@ export const branches = [
   'Production Engineering',
   'Computational Mathematics',
   'B.S. + M.S. in Mathematics and Computing',
+  'Other',
 ];
 
 export const userSideNavItems: SideNavItem[] = [
@@ -85,6 +86,7 @@ export const clubDashboardSidebarNavItems: SideNavItem[] = [
     name: 'Forms',
     Icon: PiScrollBold,
     href: '/club-dashboard/forms',
+    regexp: new RegExp(`^\/club-dashboard\/forms(?:\/.*)?$`),
   },
 ];
 

@@ -147,6 +147,63 @@ export type Database = {
           },
         ];
       };
+      forms: {
+        Row: {
+          club_id: string;
+          created_at: string | null;
+          description: string;
+          end_datetime: string;
+          form_id: string;
+          is_public: boolean;
+          owner_id: string;
+          questions: Json;
+          start_datetime: string;
+          title: string;
+          updated_at: string | null;
+        };
+        Insert: {
+          club_id: string;
+          created_at?: string | null;
+          description?: string;
+          end_datetime?: string;
+          form_id?: string;
+          is_public?: boolean;
+          owner_id: string;
+          questions?: Json;
+          start_datetime?: string;
+          title?: string;
+          updated_at?: string | null;
+        };
+        Update: {
+          club_id?: string;
+          created_at?: string | null;
+          description?: string;
+          end_datetime?: string;
+          form_id?: string;
+          is_public?: boolean;
+          owner_id?: string;
+          questions?: Json;
+          start_datetime?: string;
+          title?: string;
+          updated_at?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'public_forms_club_id_fkey';
+            columns: ['club_id'];
+            isOneToOne: false;
+            referencedRelation: 'clubs';
+            referencedColumns: ['club_id'];
+          },
+          {
+            foreignKeyName: 'public_forms_owner_id_fkey';
+            columns: ['owner_id'];
+            isOneToOne: false;
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       users: {
         Row: {
           branch: string;

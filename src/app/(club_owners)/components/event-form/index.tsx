@@ -37,25 +37,12 @@ import { AiOutlineLoading } from 'react-icons/ai';
 import type { Event } from '~/types';
 import toast from 'react-hot-toast';
 
+import { getCalenderDateTime, getISOString } from '~/lib/utils';
+
 interface Props {
   event_id: string;
   serverDetails: Event;
 }
-
-const getCalenderDateTime = (iso_string: string): CalendarDateTime => {
-  const date = new Date(iso_string);
-  return new CalendarDateTime(
-    date.getFullYear(),
-    date.getMonth() + 1,
-    date.getDate(),
-    date.getHours(),
-    date.getMinutes()
-  );
-};
-
-const getISOString = (date: CalendarDateTime): string => {
-  return date.toDate('ist').toISOString();
-};
 
 const EventForm = ({ event_id, serverDetails }: Props) => {
   const { getToken } = useAuth();

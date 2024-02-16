@@ -5,6 +5,7 @@ import { useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
 import { createEventForClub } from '~/lib/supabase/events';
+import { createFormForClub } from '~/lib/supabase/forms';
 
 import { Button } from '~/components/ui/button';
 
@@ -33,8 +34,12 @@ const CreateButton = ({ type, club_id }: Props) => {
         }
         router.push(`/club-dashboard/events/${event_id}/edit`);
       } else if (type === 'form') {
-        // TODO: Create Event
-        router.push(`/club-dashboard/forms/id/edit`);
+        const form_id = await createFormForClub(club_id, userId);
+        if (!form_id) {
+          throw new Error('Failed to create form');
+        }
+
+        router.push(`/club-dashboard/forms/${form_id}/edit`);
       }
     } catch (error) {
       console.log(error);

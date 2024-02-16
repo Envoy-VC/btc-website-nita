@@ -39,3 +39,4 @@ export type Enum = Database['public']['Enums'];
 export type User = Tables<'users'>;
 export type Club = Tables<'clubs'>;
 export type Event = Tables<'events'>;
+export type Form = Tables<'forms'>;
