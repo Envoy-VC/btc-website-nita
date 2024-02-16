@@ -9,6 +9,8 @@ import { cn } from '~/lib/utils';
 
 import { collegeNames, branches } from '~/lib/data';
 
+import { ScrollArea } from '~/components/ui/scroll-area';
+
 import { Button } from '~/components/ui/button';
 import {
   Form,
@@ -29,23 +31,8 @@ import {
 
 import { AiOutlineLoading } from 'react-icons/ai';
 
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from '~/components/ui/command';
-
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '~/components/ui/popover';
-
 import { type OnboardingFormType, onboardingFormSchema } from '../../schema';
 
-import { HiSelector, HiCheck } from 'react-icons/hi';
 import toast from 'react-hot-toast';
 import { Role } from '~/types';
 
@@ -177,57 +164,22 @@ const OnboardingForm = ({ email_id, user_id }: Props) => {
           render={({ field }) => (
             <FormItem className='flex w-full flex-col'>
               <FormLabel>College</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant='outline'
-                      role='combobox'
-                      className={cn(
-                        'w-full justify-between',
-                        !field.value && 'text-muted-foreground'
-                      )}
-                    >
-                      {field.value
-                        ? collegeList.find(
-                            (college) => college.value === field.value
-                          )?.label
-                        : 'Select College'}
-                      <HiSelector className='ml-2 h-4 w-4 shrink-0 opacity-50' />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className='w-full p-0'>
-                  <Command className=''>
-                    <CommandInput
-                      placeholder='Search College...'
-                      className='h-9'
-                    />
-                    <CommandEmpty>No College found.</CommandEmpty>
-                    <CommandGroup className='w-full'>
-                      {collegeList.map((college) => (
-                        <CommandItem
-                          value={college.label}
-                          key={college.value}
-                          onSelect={() => {
-                            form.setValue('college_name', college.value);
-                          }}
-                        >
-                          {college.label}
-                          <HiCheck
-                            className={cn(
-                              'ml-auto h-4 w-4',
-                              college.value === field.value
-                                ? 'opacity-100'
-                                : 'opacity-0'
-                            )}
-                          />
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
-                  </Command>
-                </PopoverContent>
-              </Popover>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder='Select your College' />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <ScrollArea className='h-[200px]'>
+                    {collegeList.map((college) => (
+                      <SelectItem value={college.value} key={college.value}>
+                        {college.label}
+                      </SelectItem>
+                    ))}
+                  </ScrollArea>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -238,59 +190,27 @@ const OnboardingForm = ({ email_id, user_id }: Props) => {
             disabled={form.formState.isSubmitting}
             name='branch'
             render={({ field }) => (
-              <FormItem className='flex w-full flex-col sm:max-w-sm'>
+              <FormItem className='flex w-full flex-col'>
                 <FormLabel>Branch</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant='outline'
-                        role='combobox'
-                        className={cn(
-                          'w-full justify-between',
-                          !field.value && 'text-muted-foreground'
-                        )}
-                      >
-                        {field.value
-                          ? branchNames
-                              .find((branch) => branch.value === field.value)
-                              ?.label.slice(0, 24)
-                          : 'Select Branch'}
-                        <HiSelector className='ml-2 h-4 w-4 shrink-0 opacity-50' />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className='w-full p-0'>
-                    <Command className=''>
-                      <CommandInput
-                        placeholder='Search Branch...'
-                        className='h-9'
-                      />
-                      <CommandEmpty>No Branch found.</CommandEmpty>
-                      <CommandGroup className='w-full'>
-                        {branchNames.map((branch) => (
-                          <CommandItem
-                            value={branch.label}
-                            key={branch.value}
-                            onSelect={() => {
-                              form.setValue('branch', branch.value);
-                            }}
-                          >
-                            {branch.label}
-                            <HiCheck
-                              className={cn(
-                                'ml-auto h-4 w-4',
-                                branch.value === field.value
-                                  ? 'opacity-100'
-                                  : 'opacity-0'
-                              )}
-                            />
-                          </CommandItem>
-                        ))}
-                      </CommandGroup>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder='Select your Branch' />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <ScrollArea className='h-[200px]'>
+                      {branchNames.map((branch) => (
+                        <SelectItem value={branch.value} key={branch.value}>
+                          {branch.label}
+                        </SelectItem>
+                      ))}
+                    </ScrollArea>
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}

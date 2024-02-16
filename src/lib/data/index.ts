@@ -18,19 +18,21 @@ export const collegeNames = [
   'National Institute of Technology, Meghalaya',
   'National Institute of Technology, Mizoram',
   'National Institute of Technology, Nagaland',
+  'Other',
 ];
 
 export const branches = [
   'Computer Science and Engineering',
   'Electronics and Communication Engineering',
-  'Electrical and Electronics Engineering',
+  'Electronics and Instrumentation Engineering',
+  'Electrical Engineering',
   'Mechanical Engineering',
   'Civil Engineering',
   'Chemical Engineering',
   'Biotechnology',
-  'Information Technology',
   'Production Engineering',
-  'Physics',
+  'Computational Mathematics',
+  'B.S. + M.S. in Mathematics and Computing',
 ];
 
 export const userSideNavItems: SideNavItem[] = [
