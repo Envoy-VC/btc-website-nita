@@ -7,6 +7,7 @@ import { Sidebar, DashboardNavbar } from '~/app/(user)/components';
 import MobileNavbar from '~/app/(user)/components/sidebar/mobile';
 
 import { clubDashboardSidebarNavItems as items } from '~/lib/data';
+import { LoadingSpinner } from '~/components';
 
 const ClubDashboardLayout = ({ children }: React.PropsWithChildren) => {
   return (
@@ -17,7 +18,15 @@ const ClubDashboardLayout = ({ children }: React.PropsWithChildren) => {
         <div className='mt-16 flex w-full flex-col lg:ml-[16rem] lg:mt-0'>
           <DashboardNavbar />
           <div className='px-3 py-6 sm:px-6 sm:py-10 md:px-12 lg:mt-16'>
-            <Suspense fallback={<>loading...</>}>{children}</Suspense>
+            <Suspense
+              fallback={
+                <div className='flex w-full items-center justify-center py-12'>
+                  <LoadingSpinner className='text-4xl' />
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
           </div>
         </div>
       </RoleProtect>

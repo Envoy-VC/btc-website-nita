@@ -55,3 +55,14 @@ export const updateEventDetails = async (
 
   return res.data;
 };
+
+export const getEventsForClub = async (club_id: string) => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase.from('events').select('*').eq('club_id', club_id);
+
+  if (res.error) {
+    throw new Error(res.error.message);
+  }
+
+  return res.data;
+};

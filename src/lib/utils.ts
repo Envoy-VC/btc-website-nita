@@ -35,3 +35,20 @@ export const getImageLink = (path: string) => {
     return `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${path}`;
   }
 };
+
+export const formatDate = (iso_string: string): string => {
+  const date = new Date(iso_string);
+  // prettier-ignore
+  const months: string[] = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+
+  const month = months[date.getMonth()];
+  const day = date.getDate();
+  const hours = date.getHours() % 12 || 12;
+  const minutes = date.getMinutes();
+  const amOrPm = date.getHours() >= 12 ? 'PM' : 'AM';
+
+  return `${month} ${day}, ${hours}:${minutes < 10 ? '0' : ''}${minutes} ${amOrPm}`;
+};
