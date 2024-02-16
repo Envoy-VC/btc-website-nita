@@ -2,14 +2,15 @@
 
 import createSupabaseServerClient from '../client/server';
 
-import { Event } from '~/types';
+import type { Event } from '~/types';
 
-export const createEventForClub = async (club_id: string) => {
+export const createEventForClub = async (club_id: string, owner_id: string) => {
   const supabase = await createSupabaseServerClient();
   const res = await supabase
     .from('events')
     .insert({
       club_id: club_id,
+      owner_id: owner_id,
     })
     .select('event_id');
 

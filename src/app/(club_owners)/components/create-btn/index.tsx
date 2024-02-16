@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
 import { createEventForClub } from '~/lib/supabase/events';
@@ -17,13 +18,16 @@ interface Props {
 
 const CreateButton = ({ type, club_id }: Props) => {
   const router = useRouter();
+  const { userId } = useAuth();
   const [isCreating, setIsCreating] = React.useState<boolean>(false);
 
   const onClick = async () => {
+    if (!userId) return;
     try {
       setIsCreating(true);
+
       if (type === 'event') {
-        const event_id = await createEventForClub(club_id);
+        const event_id = await createEventForClub(club_id, userId);
         if (!event_id) {
           throw new Error('Failed to create event');
         }
