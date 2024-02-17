@@ -8,6 +8,7 @@ import { getEventDetails } from '~/lib/supabase/events';
 export const revalidate = 0;
 
 import NotFound from '~/screens/not-found';
+import { notFound } from 'next/navigation';
 
 const EventEditPage = async () => {
   const headersList = headers();
@@ -23,11 +24,7 @@ const EventEditPage = async () => {
       </div>
     );
   } else {
-    return (
-      <div>
-        <NotFound />
-      </div>
-    );
+    return notFound();
   }
 };
 

@@ -11,6 +11,9 @@ import {
 import { DashboardHeader } from '~/app/(user)/components';
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
+import { Button } from '~/components/ui/button';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 const ClubDashboard = async () => {
   const club = await currentUser().then(async (user) => {
@@ -27,7 +30,13 @@ const ClubDashboard = async () => {
         <DashboardHeader
           title='Basic Details'
           description='Update your club details here.'
-        />
+        >
+          <Button asChild>
+            <Link href={`/clubs/${club.club_id}`} target='_blank'>
+              Go to Club Page
+            </Link>
+          </Button>
+        </DashboardHeader>
         <Tabs defaultValue='basic'>
           <TabsList className='max-w-sm'>
             <TabsTrigger value='basic'>Basic Details</TabsTrigger>
@@ -46,6 +55,8 @@ const ClubDashboard = async () => {
         </Tabs>
       </div>
     );
+  } else {
+    notFound();
   }
 };
 

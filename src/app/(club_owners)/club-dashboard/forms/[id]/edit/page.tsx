@@ -5,6 +5,7 @@ import { CreateForm } from '~/app/(club_owners)/components';
 export const revalidate = 0;
 
 import { getFormDetails } from '~/lib/supabase/forms';
+import { notFound } from 'next/navigation';
 
 const FormEditPage = async () => {
   const headersList = headers();
@@ -19,6 +20,8 @@ const FormEditPage = async () => {
         <CreateForm serverDetails={form} />
       </div>
     );
+  } else {
+    return notFound();
   }
 };
 

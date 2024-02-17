@@ -115,6 +115,12 @@ export const columns: ColumnDef<Event>[] = [
                 <DropdownMenuItem>Edit</DropdownMenuItem>
               </Link>
               <Link
+                href={`/club-dashboard/events/${event.event_id}`}
+                className='cursor-pointer'
+              >
+                <DropdownMenuItem>View Analytics</DropdownMenuItem>
+              </Link>
+              <Link
                 href={`/events/${event.event_id}`}
                 className='cursor-pointer'
               >

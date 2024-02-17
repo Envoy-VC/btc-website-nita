@@ -32,7 +32,7 @@ export const getEventDetails = async (event_id: string) => {
     .eq('event_id', event_id);
 
   if (res.error) {
-    throw new Error(res.error.message);
+    return null;
   }
 
   const event = res.data.at(0);
@@ -62,7 +62,7 @@ export const getEventsForClub = cache(async (club_id: string) => {
   const res = await supabase.from('events').select('*').eq('club_id', club_id);
 
   if (res.error) {
-    throw new Error(res.error.message);
+    return null;
   }
 
   return res.data;

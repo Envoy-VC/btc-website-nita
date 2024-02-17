@@ -1,11 +1,11 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 
 import { headers } from 'next/headers';
 
 import { ClubDetails } from '../../components';
 
 import { getActiveClubById } from '~/lib/supabase/clubs';
-import NotFound from '~/screens/not-found';
 
 const ClubPage = async () => {
   const headersList = headers();
@@ -19,11 +19,7 @@ const ClubPage = async () => {
       </div>
     );
   } else {
-    return (
-      <div>
-        <NotFound />
-      </div>
-    );
+    return notFound();
   }
 };
 

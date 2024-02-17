@@ -9,7 +9,7 @@ export const getClubForOwner = async (owner_id: string) => {
   const res = await supabase.from('clubs').select('*').eq('owner_id', owner_id);
 
   if (res.error) {
-    throw res.error;
+    return null;
   }
 
   const club = res.data.at(0);
@@ -75,7 +75,7 @@ export const getActiveClubById = async (club_id: string) => {
     .eq('is_public', true);
 
   if (res.error) {
-    throw res.error;
+    return null;
   }
 
   const club = res.data.at(0);
@@ -88,7 +88,7 @@ export const getActiveClubs = async () => {
   const res = await supabase.from('clubs').select('*').eq('is_public', true);
 
   if (res.error) {
-    throw res.error;
+    return [];
   }
   return res.data;
 };
