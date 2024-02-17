@@ -4,6 +4,10 @@ import { CreateForm } from '~/app/(club_owners)/components';
 
 export const revalidate = 0;
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
+
+import { DeleteButton } from '~/app/(club_owners)/components';
+
 import { getFormDetails } from '~/lib/supabase/forms';
 import { notFound } from 'next/navigation';
 
@@ -17,7 +21,24 @@ const FormEditPage = async () => {
   if (form) {
     return (
       <div className='mx-auto max-w-2xl'>
-        <CreateForm serverDetails={form} />
+        <Tabs defaultValue='edit'>
+          <TabsList className='w-full'>
+            <TabsTrigger value='edit' className='w-full'>
+              Edit
+            </TabsTrigger>
+            <TabsTrigger value='advanced' className='w-full'>
+              Advanced
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value='edit'>
+            <CreateForm serverDetails={form} />
+          </TabsContent>
+          <TabsContent value='advanced'>
+            <div className='py-4'>
+              <DeleteButton type='form' id={form.form_id} />
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     );
   } else {

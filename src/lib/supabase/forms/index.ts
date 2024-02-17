@@ -104,3 +104,14 @@ export const createFormResponse = async (
 
   return res.data;
 };
+
+export const deleteForm = async (form_id: string) => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase.from('forms').delete().eq('form_id', form_id);
+
+  if (res.error) {
+    throw new Error(res.error.message);
+  }
+
+  return res.data;
+};

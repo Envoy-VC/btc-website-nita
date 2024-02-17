@@ -125,10 +125,6 @@ export const columns: ColumnDef<Event>[] = [
               <DropdownMenuItem className='cursor-pointer'>
                 <Link href={`/events/${event.event_id}`}>Event Page</Link>
               </DropdownMenuItem>
-
-              <DropdownMenuItem className='cursor-pointer'>
-                Delete
-              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

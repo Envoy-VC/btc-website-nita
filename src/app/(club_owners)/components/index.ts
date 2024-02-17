@@ -4,6 +4,7 @@ import ClubSocialDetails from './details-form/social';
 import EventForm from './event-form';
 import CreateForm from './create-form';
 import { DataTable } from './forms-table';
+import DeleteButton from './delete-btn';
 
 export {
   ClubBasicDetails,
@@ -12,4 +13,5 @@ export {
   EventForm,
   CreateForm,
   DataTable,
+  DeleteButton,
 };

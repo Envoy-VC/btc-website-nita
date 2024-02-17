@@ -67,3 +67,14 @@ export const getEventsForClub = cache(async (club_id: string) => {
 
   return res.data;
 });
+
+export const deleteEvent = async (event_id: string) => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase.from('events').delete().eq('event_id', event_id);
+
+  if (res.error) {
+    throw new Error(res.error.message);
+  }
+
+  return res.data;
+};

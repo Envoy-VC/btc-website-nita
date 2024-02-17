@@ -115,10 +115,6 @@ export const columns: ColumnDef<Form>[] = [
                   View Analytics
                 </Link>
               </DropdownMenuItem>
-
-              <DropdownMenuItem className='cursor-pointer'>
-                Delete
-              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
