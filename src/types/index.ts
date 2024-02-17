@@ -40,3 +40,4 @@ export type User = Tables<'users'>;
 export type Club = Tables<'clubs'>;
 export type Event = Tables<'events'>;
 export type Form = Tables<'forms'>;
+export type FormResponse = Tables<'form_responses'>;

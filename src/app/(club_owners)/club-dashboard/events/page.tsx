@@ -5,12 +5,17 @@ import { DashboardHeader } from '~/app/(user)/components';
 import CreateButton from '../../components/create-btn';
 
 import { getClubForOwner } from '~/lib/supabase/clubs';
-import { EventTabs } from '../../components';
+import { getEventsForClub } from '~/lib/supabase/events';
 import { LoadingSpinner } from '~/components';
+
+import { EventsTable } from '../../components/events-table';
+import { columns } from '../../components/events-table/Column';
 
 const ClubEventsPage = async () => {
   const { userId } = auth();
   const club = await getClubForOwner(userId ?? '');
+  const events = await getEventsForClub(club?.club_id ?? '');
+
   if (club) {
     return (
       <div className='flex flex-col'>
@@ -24,7 +29,7 @@ const ClubEventsPage = async () => {
             </div>
           }
         >
-          <EventTabs clubId={club?.club_id ?? ''} />
+          <EventsTable columns={columns} data={events} />
         </Suspense>
       </div>
     );
