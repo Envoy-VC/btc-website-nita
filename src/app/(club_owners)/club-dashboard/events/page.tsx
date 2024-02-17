@@ -4,8 +4,6 @@ import { auth } from '@clerk/nextjs';
 import { DashboardHeader } from '~/app/(user)/components';
 import CreateButton from '../../components/create-btn';
 
-export const revalidate = 60;
-
 import { getClubForOwner } from '~/lib/supabase/clubs';
 import { EventTabs } from '../../components';
 import { LoadingSpinner } from '~/components';

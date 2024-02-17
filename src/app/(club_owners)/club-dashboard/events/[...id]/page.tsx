@@ -5,6 +5,8 @@ import { EventForm } from '~/app/(club_owners)/components';
 
 import { getEventDetails } from '~/lib/supabase/events';
 
+export const revalidate = 0;
+
 import NotFound from '~/screens/not-found';
 
 const EventEditPage = async () => {

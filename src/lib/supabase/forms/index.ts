@@ -1,6 +1,7 @@
 'use server';
 
 import createSupabaseServerClient from '../client/server';
+import { cache } from 'react';
 
 import type { Form } from '~/types';
 
@@ -23,7 +24,7 @@ export const createFormForClub = async (club_id: string, owner_id: string) => {
   return form?.form_id ?? null;
 };
 
-export const getFormDetails = async (form_id: string) => {
+export const getFormDetails = cache(async (form_id: string) => {
   const supabase = await createSupabaseServerClient();
   const res = await supabase.from('forms').select('*').eq('form_id', form_id);
 
@@ -34,7 +35,7 @@ export const getFormDetails = async (form_id: string) => {
   const form = res.data.at(0);
 
   return form ?? null;
-};
+});
 
 export const updateFormDetails = async (
   form_id: string,
@@ -50,7 +51,7 @@ export const updateFormDetails = async (
   return res.data;
 };
 
-export const getFormsForClub = async (club_id: string) => {
+export const getFormsForClub = cache(async (club_id: string) => {
   const supabase = await createSupabaseServerClient();
   const res = await supabase.from('forms').select('*').eq('club_id', club_id);
 
@@ -59,4 +60,4 @@ export const getFormsForClub = async (club_id: string) => {
   }
 
   return res.data;
-};
+});

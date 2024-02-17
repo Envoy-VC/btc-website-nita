@@ -1,5 +1,6 @@
 'use server';
 
+import { cache } from 'react';
 import createSupabaseServerClient from '../client/server';
 
 import type { Event } from '~/types';
@@ -56,7 +57,7 @@ export const updateEventDetails = async (
   return res.data;
 };
 
-export const getEventsForClub = async (club_id: string) => {
+export const getEventsForClub = cache(async (club_id: string) => {
   const supabase = await createSupabaseServerClient();
   const res = await supabase.from('events').select('*').eq('club_id', club_id);
 
@@ -65,4 +66,4 @@ export const getEventsForClub = async (club_id: string) => {
   }
 
   return res.data;
-};
+});

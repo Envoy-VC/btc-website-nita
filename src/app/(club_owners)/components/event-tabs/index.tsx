@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '~/components/ui/tabs';
 
 import EventCard from '../event-card';
 
-export const revalidate = 1;
+export const revalidate = 0;
 
 interface Props {
   clubId: string;

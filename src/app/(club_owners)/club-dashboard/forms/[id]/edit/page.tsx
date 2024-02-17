@@ -2,6 +2,8 @@ import React from 'react';
 import { headers } from 'next/headers';
 import { CreateForm } from '~/app/(club_owners)/components';
 
+export const revalidate = 0;
+
 import { getFormDetails } from '~/lib/supabase/forms';
 
 const FormEditPage = async () => {
