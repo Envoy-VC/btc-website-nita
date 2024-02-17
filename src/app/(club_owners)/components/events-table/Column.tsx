@@ -103,30 +103,32 @@ export const columns: ColumnDef<Event>[] = [
             <DropdownMenuContent align='end'>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
+                className='cursor-pointer'
                 onClick={() => navigator.clipboard.writeText(event.event_id)}
               >
                 Copy Event ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <Link
-                href={`/club-dashboard/events/${event.event_id}/edit`}
-                className='cursor-pointer'
-              >
-                <DropdownMenuItem>Edit</DropdownMenuItem>
-              </Link>
-              <Link
-                href={`/club-dashboard/events/${event.event_id}`}
-                className='cursor-pointer'
-              >
-                <DropdownMenuItem>View Analytics</DropdownMenuItem>
-              </Link>
-              <Link
-                href={`/events/${event.event_id}`}
-                className='cursor-pointer'
-              >
-                <DropdownMenuItem>Event Page</DropdownMenuItem>
-              </Link>
-              <DropdownMenuItem>Delete</DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                <Link href={`/club-dashboard/events/${event.event_id}/edit`}>
+                  Edit
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                <Link href={`/club-dashboard/events/${event.event_id}`}>
+                  View Analytics
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                <Link href={`/events/${event.event_id}`}>Event Page</Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                Delete
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

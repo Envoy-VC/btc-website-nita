@@ -59,18 +59,18 @@ export const ActionBar = async () => {
             <>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem asChild className='cursor-pointer'>
                 <Link href='/dashboard'>Dashboard</Link>
               </DropdownMenuItem>
               {role >= Role.CLUB_OWNER && (
-                <DropdownMenuItem asChild>
+                <DropdownMenuItem asChild className='cursor-pointer'>
                   <Link href='/club-dashboard'>Club Dashboard</Link>
                 </DropdownMenuItem>
               )}
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem asChild className='cursor-pointer'>
                 <Link href='/dashboard/events'>Events</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem asChild className='cursor-pointer'>
                 <Link href='/dashboard/account'>Account</Link>
               </DropdownMenuItem>
               <DropdownMenuItem>

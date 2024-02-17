@@ -97,24 +97,28 @@ export const columns: ColumnDef<Form>[] = [
             <DropdownMenuContent align='end'>
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
+                className='cursor-pointer'
                 onClick={() => navigator.clipboard.writeText(form.form_id)}
               >
                 Copy form ID
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <Link
-                href={`/club-dashboard/forms/${form.form_id}/edit`}
-                className='cursor-pointer'
-              >
-                <DropdownMenuItem>Edit</DropdownMenuItem>
-              </Link>
-              <Link
-                href={`/club-dashboard/forms/${form.form_id}`}
-                className='cursor-pointer'
-              >
-                <DropdownMenuItem>View Analytics</DropdownMenuItem>
-              </Link>
-              <DropdownMenuItem>Delete</DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                <Link href={`/club-dashboard/forms/${form.form_id}/edit`}>
+                  Edit
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                <Link href={`/club-dashboard/forms/${form.form_id}`}>
+                  View Analytics
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                Delete
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
