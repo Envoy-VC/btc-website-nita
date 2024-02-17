@@ -3,7 +3,7 @@ import { env } from '~/env';
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { CalendarDateTime } from '@internationalized/date';
-import type { RJSFSchema, StrictRJSFSchema } from '@rjsf/utils';
+import type { RJSFSchema, StrictRJSFSchema, UiSchema } from '@rjsf/utils';
 
 import type { FormType } from './zod/form';
 
@@ -100,6 +100,22 @@ export const toJsonSchema = (data: FormType): RJSFSchema => {
 export const toStrictJsonSchema = (
   question: FormType['questions'][number]
 ): StrictRJSFSchema => {
+  const getType = () => {
+    if (question.type === 'checkbox') {
+      return 'boolean';
+    } else if (question.type === 'multiple-choice') {
+      return 'array';
+    } else {
+      return 'string';
+    }
+  };
+
+  const getUniqueItems = () => {
+    if (question.type === 'multiple-choice') {
+      return true;
+    }
+  };
+
   const getFormat = () => {
     if (question.type === 'date') {
       return 'date';
@@ -111,18 +127,48 @@ export const toStrictJsonSchema = (
       return undefined;
     }
   };
-  const getOptions = () => {
-    if (question.type === 'multiple-choice' || question.type === 'select') {
+
+  const getEnum = () => {
+    if (question.type === 'select') {
       return question.options.map((o) => o.option);
     }
   };
-  const format = getFormat();
+
+  const getItems = () => {
+    if (question.type === 'multiple-choice') {
+      return {
+        type: 'string',
+        enum: question.options.map((o) => o.option),
+      } as const;
+    }
+  };
+
   const schema: StrictRJSFSchema = {
     title: question.question,
-    type: 'string',
-    format: format,
-    enum: getOptions(),
+    type: getType(),
+    format: getFormat(),
+    uniqueItems: getUniqueItems(),
+    enum: getEnum(),
+    items: getItems(),
   };
 
   return schema;
+};
+
+export const buildUISchema = (data: FormType): UiSchema => {
+  const longTextFields: Record<string, UiSchema> = {};
+
+  data.questions.forEach((question) => {
+    if (question.type === 'long-answer') {
+      longTextFields[question.name] = {
+        'ui:widget': 'textarea',
+      };
+    }
+  });
+
+  const uiSchema: UiSchema = {
+    ...longTextFields,
+  };
+
+  return uiSchema;
 };

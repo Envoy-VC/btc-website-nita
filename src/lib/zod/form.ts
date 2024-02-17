@@ -62,6 +62,14 @@ export const dateTimeQuestionSchema = z.object({
   options: z.array(optionSchema),
 });
 
+export const checkboxQuestionSchema = z.object({
+  question: z.string({ required_error: '' }),
+  name: z.string({ required_error: '' }),
+  type: z.string({ required_error: '' }).default('checkbox'),
+  required: z.boolean({ required_error: '' }).default(false),
+  options: z.array(optionSchema),
+});
+
 export const questionSchema = z.union([
   shortQuestionSchema,
   longQuestionSchema,
@@ -70,6 +78,7 @@ export const questionSchema = z.union([
   dateQuestionSchema,
   timeQuestionSchema,
   dateTimeQuestionSchema,
+  checkboxQuestionSchema,
 ]);
 
 export const formSchema = z.object({
@@ -93,15 +102,15 @@ export const formSchema = z.object({
 export const questionTypes = [
   {
     name: 'Short Answer',
-    value: 'short_answer',
+    value: 'short-answer',
   },
   {
     name: 'Long Answer',
-    value: 'long_answer',
+    value: 'long-answer',
   },
   {
     name: 'Multiple Choice',
-    value: 'multiple_choice',
+    value: 'multiple-choice',
   },
   {
     name: 'Select',
@@ -117,7 +126,11 @@ export const questionTypes = [
   },
   {
     name: 'Date & Time',
-    value: 'date_time',
+    value: 'date-time',
+  },
+  {
+    name: 'Checkbox',
+    value: 'checkbox',
   },
 ];
 

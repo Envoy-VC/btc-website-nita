@@ -147,6 +147,48 @@ export type Database = {
           },
         ];
       };
+      form_responses: {
+        Row: {
+          created_at: string;
+          form_data: Json;
+          form_id: string;
+          response_id: string;
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          form_data: Json;
+          form_id?: string;
+          response_id?: string;
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          created_at?: string;
+          form_data?: Json;
+          form_id?: string;
+          response_id?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: 'public_form_responses_form_id_fkey';
+            columns: ['form_id'];
+            isOneToOne: false;
+            referencedRelation: 'forms';
+            referencedColumns: ['form_id'];
+          },
+          {
+            foreignKeyName: 'public_form_responses_user_id_fkey';
+            columns: ['user_id'];
+            isOneToOne: false;
+            referencedRelation: 'users';
+            referencedColumns: ['id'];
+          },
+        ];
+      };
       forms: {
         Row: {
           club_id: string;
