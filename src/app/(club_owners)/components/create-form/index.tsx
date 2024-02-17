@@ -87,6 +87,7 @@ const CreateForm = ({ serverDetails }: Props) => {
 
   const onAddQuestion = (type: FormType['questions'][number]['type']) => {
     append({
+      name: '',
       question: '',
       type,
       required: false,
@@ -193,7 +194,27 @@ const CreateForm = ({ serverDetails }: Props) => {
                     </span>
                   </span>
                 </div>
-
+                <FormField
+                  control={form.control}
+                  name={`questions.${index}.name`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          placeholder={`Name`}
+                          size={16}
+                          {...field}
+                          className='max-w-2xl'
+                          disabled={form.formState.isSubmitting}
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Should be unique and for each question.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 <FormField
                   control={form.control}
                   name={`questions.${index}.question`}

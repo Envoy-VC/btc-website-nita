@@ -1,7 +1,11 @@
+import { env } from '~/env';
+
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { env } from '~/env';
 import { CalendarDateTime } from '@internationalized/date';
+import type { RJSFSchema, StrictRJSFSchema } from '@rjsf/utils';
+
+import type { FormType } from './zod/form';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -67,4 +71,58 @@ export const getCalenderDateTime = (iso_string: string): CalendarDateTime => {
 
 export const getISOString = (date: CalendarDateTime): string => {
   return date.toDate('ist').toISOString();
+};
+
+export const toJsonSchema = (data: FormType): RJSFSchema => {
+  const requiredFields = data.questions
+    .filter((q) => q.required)
+    .map((i) => i.name);
+
+  // eslint-disable-next-line prefer-const
+  let questions: Record<string, StrictRJSFSchema> = {};
+
+  data.questions.forEach((question) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    questions[question.name] = toStrictJsonSchema(question);
+  });
+
+  const schema: RJSFSchema = {
+    title: data.title,
+    description: data.description,
+    type: 'object',
+    required: requiredFields,
+    properties: questions,
+  };
+
+  return schema;
+};
+
+export const toStrictJsonSchema = (
+  question: FormType['questions'][number]
+): StrictRJSFSchema => {
+  const getFormat = () => {
+    if (question.type === 'date') {
+      return 'date';
+    } else if (question.type === 'time') {
+      return 'time';
+    } else if (question.type === 'date-time') {
+      return 'date-time';
+    } else {
+      return undefined;
+    }
+  };
+  const getOptions = () => {
+    if (question.type === 'multiple-choice' || question.type === 'select') {
+      return question.options.map((o) => o.option);
+    }
+  };
+  const format = getFormat();
+  const schema: StrictRJSFSchema = {
+    title: question.question,
+    type: 'string',
+    format: format,
+    enum: getOptions(),
+  };
+
+  return schema;
 };
