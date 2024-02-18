@@ -5,6 +5,8 @@ import { EventForm } from '~/app/(club_owners)/components';
 
 import { getEventDetails } from '~/lib/supabase/events';
 
+import { auth } from '@clerk/nextjs';
+
 export const revalidate = 0;
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
@@ -17,9 +19,10 @@ const EventEditPage = async () => {
   const path = headersList.get('x-pathname');
   const paths = (path ?? '').split('/');
   const event_id = paths.at(paths.length - 2) ?? '';
+  const { userId } = auth();
 
   const serverDetails = await getEventDetails(event_id);
-  if (serverDetails) {
+  if (serverDetails && serverDetails.owner_id === userId) {
     return (
       <div>
         <Tabs defaultValue='edit'>

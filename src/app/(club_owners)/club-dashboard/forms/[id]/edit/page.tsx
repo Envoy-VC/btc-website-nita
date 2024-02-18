@@ -7,6 +7,7 @@ export const revalidate = 0;
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs';
 
 import { DeleteButton } from '~/app/(club_owners)/components';
+import { auth } from '@clerk/nextjs';
 
 import { getFormDetails } from '~/lib/supabase/forms';
 import { notFound } from 'next/navigation';
@@ -16,9 +17,10 @@ const FormEditPage = async () => {
   const path = headersList.get('x-pathname');
   const paths = (path ?? '').split('/');
   const form_id = paths.at(paths.length - 2) ?? '';
+  const { userId } = auth();
 
   const form = await getFormDetails(form_id);
-  if (form) {
+  if (form && form.owner_id === userId) {
     return (
       <div className='mx-auto max-w-2xl'>
         <Tabs defaultValue='edit'>

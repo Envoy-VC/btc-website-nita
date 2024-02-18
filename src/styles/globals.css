@@ -8,6 +8,7 @@
 
 * {
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .eventCardShadow {
@@ -18,4 +19,9 @@
   .eventCardShadow {
     box-shadow: none;
   }
+}
+
+/* prevent zooming on mobile devices */
+input {
+  font-size: 14px !important;
 }
