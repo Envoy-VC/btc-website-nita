@@ -69,6 +69,14 @@ export const getCalenderDateTime = (iso_string: string): CalendarDateTime => {
   );
 };
 
+export const formatTime = (time: string): string => {
+  const [hours, minutes] = time.split(':') as [string, string, string];
+  const amOrPm = +hours >= 12 ? 'PM' : 'AM';
+  const formattedHours = +hours % 12 || 12;
+
+  return `${formattedHours}:${minutes} ${amOrPm}`;
+};
+
 export const getISOString = (date: CalendarDateTime): string => {
   return date.toDate('ist').toISOString();
 };
@@ -197,5 +205,48 @@ export const formatRange = (
     }
   } else {
     return `${startMonth} ${startDay}-${startYear === endYear ? '' : startYear + ' '}${endMonth} ${endDay}`;
+  }
+};
+
+interface ResponseType {
+  question: string;
+  answer: string;
+}
+
+export const formatResponses = (
+  questions: FormType['questions'],
+  responses: Record<string, string | number | string[] | boolean | undefined>
+): ResponseType[] => {
+  const formattedResponses: ResponseType[] = [];
+
+  questions.forEach((question, index) => {
+    const answer = responses[question.name];
+    const formattedAnswer = formatAnswer(answer, question.type);
+
+    formattedResponses.push({
+      question: question.question,
+      answer: formattedAnswer,
+    });
+  });
+
+  return formattedResponses;
+};
+
+const formatAnswer = (
+  answer: string | number | string[] | boolean | undefined,
+  type: string
+): string => {
+  if (type === 'date') {
+    return formatDate(answer as string);
+  } else if (type === 'date-time') {
+    return formatDate(answer as string);
+  } else if (type === 'time') {
+    return formatTime(answer as string);
+  } else if (type === 'multiple-choice') {
+    return (answer as string[]).join(', ');
+  } else if (type === 'checkbox') {
+    return (answer as boolean) ? 'Yes' : 'No';
+  } else {
+    return answer as string;
   }
 };

@@ -3,6 +3,9 @@
 import createSupabaseServerClient from '../client/server';
 import { cache } from 'react';
 
+import { getUser } from '../user';
+import type { UserResponse } from '~/app/(club_owners)/components/form-document';
+
 import type { Form } from '~/types';
 import type { Json } from '~/types/database';
 
@@ -115,3 +118,39 @@ export const deleteForm = async (form_id: string) => {
 
   return res.data;
 };
+
+export const getFormResponses = cache(async (form_id: string) => {
+  const formResponses: UserResponse[] = [];
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase
+    .from('form_responses')
+    .select('*')
+    .eq('form_id', form_id);
+
+  if (res.error) {
+    return [];
+  }
+
+  const data = res.data;
+
+  for (const ele of data) {
+    const user = await getUser(ele.user_id);
+    if (!user) continue;
+    formResponses.push({
+      details: {
+        name: user.name,
+        email: user.email_id,
+        phone_number: user.phone_number,
+        college: user.college_name,
+        branch: user.branch,
+        graduation_year: user.expected_graduation,
+      },
+      response: ele.form_data as Record<
+        string,
+        string | number | string[] | boolean | undefined
+      >,
+    });
+  }
+
+  return formResponses;
+});
