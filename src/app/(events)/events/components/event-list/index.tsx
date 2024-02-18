@@ -19,6 +19,8 @@ import {
 } from 'react-icons/hi';
 import { Input } from '~/components/ui/input';
 
+import Fuse from 'fuse.js';
+
 interface Props {
   serverDetails: Event[];
 }
@@ -30,20 +32,34 @@ const EventList = ({ serverDetails }: Props) => {
   const onFilterByName = (name: string) => {
     if (name === '') {
       setEvents(serverDetails);
+      return;
     }
 
     const events = serverDetails;
 
-    const filteredEvents = events.filter((event) => {
-      const eventWords = event.event_name.toLowerCase().split(' ');
-      const searchWords = name.toLowerCase().split(' ');
-
-      return searchWords.every((word) => {
-        return eventWords.some((eventWord) => {
-          return eventWord.includes(word);
-        });
-      });
+    const fuse = new Fuse(events, {
+      includeScore: true,
+      keys: [
+        {
+          name: 'event_name',
+          weight: 0.7,
+        },
+        {
+          name: 'venue',
+          weight: 0.4,
+        },
+        {
+          name: 'event_description',
+          weight: 0.2,
+        },
+      ],
     });
+
+    const result = fuse.search(name);
+
+    result.sort((a, b) => (a.score ?? 0) - (b.score ?? 0));
+
+    const filteredEvents = result.map((res) => res.item);
 
     setEvents(filteredEvents);
   };
