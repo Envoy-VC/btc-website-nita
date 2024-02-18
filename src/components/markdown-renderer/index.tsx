@@ -32,10 +32,24 @@ const MarkdownRenderer = ({ content }: Props) => {
             </p>
           );
         },
+        ul({ children }) {
+          return (
+            <ul className='flex w-full flex-col gap-2 break-words text-sm text-neutral-700 md:text-[1rem]'>
+              {children}
+            </ul>
+          );
+        },
+        ol({ children }) {
+          return (
+            <ol className='flex w-full flex-col gap-2 break-words text-sm text-neutral-700 md:text-[1rem]'>
+              {children}
+            </ol>
+          );
+        },
         li({ children }) {
           return (
             <div className='flex w-full flex-row items-start gap-2 break-words text-sm text-neutral-700 md:text-[1rem]'>
-              <div className='mt-2 h-2 w-2 rounded-full bg-neutral-700' />
+              <div className='mt-[5px] h-[8px] w-[8px] rounded-full bg-neutral-700' />
               <div className='w-full'>{children}</div>
             </div>
           );
@@ -51,9 +65,9 @@ const MarkdownRenderer = ({ content }: Props) => {
           // Check if the parent is an unordered list (ul)
 
           return (
-            <div className='my-2 mt-6 bg-gradient-to-b from-neutral-100 to-neutral-400 bg-clip-text text-xl font-bold text-transparent underline sm:text-2xl md:text-3xl'>
+            <h3 className='text-[1rem] font-semibold text-neutral-700 sm:text-lg'>
               {children}
-            </div>
+            </h3>
           );
         },
       }}

@@ -57,7 +57,7 @@ export const getFormsForClub = cache(async (club_id: string) => {
   const res = await supabase.from('forms').select('*').eq('club_id', club_id);
 
   if (res.error) {
-    return null;
+    return [];
   }
 
   return res.data;
