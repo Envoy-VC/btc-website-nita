@@ -16,6 +16,7 @@ import { HiExternalLink } from 'react-icons/hi';
 
 import type { Club } from '~/types';
 import { Button } from '~/components/ui/button';
+import ClubEvents from './ClubEvents';
 interface Props {
   club: Club;
 }
@@ -142,13 +143,7 @@ const ClubDetails = ({ club }: Props) => {
               View All
             </Button>
           </SectionHeader>
-          <div className='grid w-full gap-4 md:grid-cols-2 2xl:grid-cols-3'>
-            {/* {Array(4)
-              .fill(true)
-              .map((ele, idx) => (
-                <EventCard key={idx} />
-              ))} */}
-          </div>
+          <ClubEvents club_id={club.club_id} />
         </div>
       </div>
     </div>

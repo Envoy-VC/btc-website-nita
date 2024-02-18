@@ -119,3 +119,19 @@ export const getAllEvents = cache(async () => {
 
   return res.data;
 });
+
+export const getApprovedEventsForClub = cache(async (club_id: string) => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase
+    .from('events')
+    .select('*')
+    .eq('club_id', club_id)
+    .eq('is_public', true)
+    .eq('is_approved', true);
+
+  if (res.error) {
+    return [];
+  }
+
+  return res.data;
+});
