@@ -9,7 +9,7 @@ import { ActionBar } from '~/app/(user)/components/nav';
 
 const Navbar = () => {
   return (
-    <nav className='flex w-full flex-row justify-between gap-3 border-2 px-4 py-4'>
+    <nav className='flex w-full flex-row justify-between gap-3 border-b px-4 py-4'>
       <Link href='/' className='flex items-center gap-3'>
         <Image
           src={BTCLogo.src}
