@@ -172,3 +172,30 @@ export const buildUISchema = (data: FormType): UiSchema => {
 
   return uiSchema;
 };
+
+export const formatRange = (
+  startDateStr: string,
+  endDateStr: string
+): string => {
+  const startDate = new Date(startDateStr);
+  const endDate = new Date(endDateStr);
+
+  const startMonth = startDate.toLocaleString('default', { month: 'short' });
+  const endMonth = endDate.toLocaleString('default', { month: 'short' });
+
+  const startDay = startDate.getDate();
+  const endDay = endDate.getDate();
+
+  const startYear = startDate.getFullYear();
+  const endYear = endDate.getFullYear();
+
+  if (startMonth === endMonth && startYear === endYear) {
+    if (startDay === endDay) {
+      return `${startMonth} ${startDay}`;
+    } else {
+      return `${startMonth} ${startDay}-${endDay}`;
+    }
+  } else {
+    return `${startMonth} ${startDay}-${startYear === endYear ? '' : startYear + ' '}${endMonth} ${endDay}`;
+  }
+};

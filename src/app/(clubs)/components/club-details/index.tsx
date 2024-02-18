@@ -143,11 +143,11 @@ const ClubDetails = ({ club }: Props) => {
             </Button>
           </SectionHeader>
           <div className='grid w-full gap-4 md:grid-cols-2 2xl:grid-cols-3'>
-            {Array(4)
+            {/* {Array(4)
               .fill(true)
               .map((ele, idx) => (
                 <EventCard key={idx} />
-              ))}
+              ))} */}
           </div>
         </div>
       </div>

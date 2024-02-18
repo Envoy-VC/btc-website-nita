@@ -3,6 +3,8 @@
 import { cache } from 'react';
 import createSupabaseServerClient from '../client/server';
 
+import { getActiveClubById } from '../clubs';
+
 import type { Event } from '~/types';
 
 export const createEventForClub = async (club_id: string, owner_id: string) => {
@@ -106,3 +108,14 @@ export const deleteEvent = async (event_id: string) => {
 
   return res.data;
 };
+
+export const getAllEvents = cache(async () => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase.from('events').select('*').eq('is_public', true);
+
+  if (res.error) {
+    return [];
+  }
+
+  return res.data;
+});
