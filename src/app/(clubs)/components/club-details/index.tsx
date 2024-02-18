@@ -92,11 +92,14 @@ const ClubDetails = ({ club }: Props) => {
               </SectionHeader>
               <ScrollArea className='h-[20rem] rounded-md'>
                 <div className='flex flex-col gap-3'>
-                  {Array(6)
+                  <div className='py-8 text-center text-lg font-medium text-neutral-700'>
+                    No announcements yet.
+                  </div>
+                  {/* {Array(6)
                     .fill(true)
                     .map((ele, idx) => (
                       <AnnouncementPill key={idx} />
-                    ))}
+                    ))} */}
                 </div>
               </ScrollArea>
             </div>
