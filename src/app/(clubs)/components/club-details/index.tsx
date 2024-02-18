@@ -84,7 +84,7 @@ const ClubDetails = ({ club }: Props) => {
 
         <div className='flex flex-col gap-8 lg:flex-row'>
           <div className='w-full basis-3/5'>
-            <div className='flex flex-col gap-4'>
+            <div className='flex flex-col gap-4 rounded-lg border p-3'>
               <SectionHeader title='Announcements'>
                 <Button variant='outline' size='sm'>
                   View All
@@ -105,7 +105,7 @@ const ClubDetails = ({ club }: Props) => {
             </div>
           </div>
           <div className='w-full basis-2/5'>
-            <div className='flex flex-col gap-3'>
+            <div className='flex h-full flex-col gap-3 rounded-lg border p-3'>
               <SectionHeader title='Socials' />
               <div className='flex flex-col'>
                 {club.website !== '' && (
