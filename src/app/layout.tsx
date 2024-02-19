@@ -33,7 +33,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Gymkhana Technical',
-    description: 'Experience BTC Gymkhana Technical!',
+    description:
+      'Experience BTC Gymkhana Technical: Register for events, explore clubs, and dive into college life! Join the excitement today!',
     creator: '@Envoy_1084',
     images: ['/api/og'],
   },

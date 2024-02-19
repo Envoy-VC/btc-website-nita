@@ -6,6 +6,14 @@ export const metadata: Metadata = {
   title: 'Sign-in',
   description:
     'Sign in to your BTC Gymkhana Technical account. Access exclusive features, manage your profile, and stay connected with the vibrant college community.',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sign-in',
+    description:
+      'Sign in to your BTC Gymkhana Technical account. Access exclusive features, manage your profile, and stay connected with the vibrant college community.',
+    creator: '@Envoy_1084',
+    images: ['/api/og?title=⚡ Get Started'],
+  },
   openGraph: {
     title: 'Sign-in',
     description:

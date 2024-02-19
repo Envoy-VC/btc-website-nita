@@ -10,12 +10,18 @@ export const metadata: Metadata = {
   title: 'Events',
   description:
     'Discover upcoming events at BTC Gymkhana Technical. Register and participate in various activities. Stay engaged with college life.',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Events | Gymkhana Technical',
+    description:
+      'Discover upcoming events at BTC Gymkhana Technical. Register and participate in various activities. Stay engaged with college life.',
+    creator: '@Envoy_1084',
+    images: ['/api/og?title=🎟️ Events'],
+  },
   openGraph: {
     title: 'Events | Gymkhana Technical',
     description:
       'Discover upcoming events at BTC Gymkhana Technical. Register and participate in various activities. Stay engaged with college life.',
-    type: 'website',
-    locale: 'en_US',
     url: 'https://btc.gymkhananita.com/events',
     images: [
       {
