@@ -12,7 +12,7 @@ const Home = () => {
       <div className='hidden lg:flex'>
         <Navbar />
       </div>
-      Home
+      <div className='py-20 lg:py-0'>Home</div>
     </div>
   );
 };
