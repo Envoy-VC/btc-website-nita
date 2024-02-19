@@ -112,3 +112,21 @@ export const commandItems = [
     Icon: PiUsersThreeBold,
   },
 ];
+
+export const homePageItems: SideNavItem[] = [
+  {
+    name: 'All Events',
+    Icon: HiOutlineTicket,
+    href: '/events',
+  },
+  {
+    name: 'All Clubs',
+    Icon: PiUsersThreeBold,
+    href: '/clubs',
+  },
+  {
+    name: 'Dashboard',
+    Icon: RxDashboard,
+    href: '/dashboard',
+  },
+];

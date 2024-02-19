@@ -8,7 +8,11 @@ import { usePathname } from 'next/navigation';
 import { cn } from '~/lib/utils';
 import { Button } from '~/components/ui/button';
 
-import { userSideNavItems, clubDashboardSidebarNavItems } from '~/lib/data';
+import {
+  userSideNavItems,
+  clubDashboardSidebarNavItems,
+  homePageItems,
+} from '~/lib/data';
 
 interface Props {
   name: string;
@@ -17,11 +21,13 @@ interface Props {
 
 const DashboardItem = ({ name, href }: Props) => {
   const path = usePathname();
-  const item = [...userSideNavItems, ...clubDashboardSidebarNavItems].find(
-    (item) => item.href.includes(href)
-  )!;
+  const item = [
+    ...userSideNavItems,
+    ...clubDashboardSidebarNavItems,
+    ...homePageItems,
+  ].find((item) => item.href.includes(href))!;
 
-  const isActive = item.regexp ? item.regexp.test(path) : path === href;
+  const isActive = item?.regexp ? item.regexp.test(path) : path === href;
 
   return (
     <Button

@@ -16,7 +16,7 @@ const Header = ({
     <>
       <div className='flex w-full flex-row items-center justify-between'>
         <div className='flex w-full flex-col gap-2'>
-          <h1 className='font-neutral-600 text-xl font-semibold sm:text-3xl'>
+          <h1 className='font-neutral-600 text-2xl font-semibold sm:text-3xl'>
             {title}
           </h1>
           <p className='text-xs text-neutral-600 sm:text-[1rem]'>

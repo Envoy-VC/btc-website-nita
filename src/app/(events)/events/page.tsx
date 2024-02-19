@@ -8,7 +8,7 @@ import EventList from './components/event-list';
 const Events = async () => {
   const events = await getAllEvents();
   return (
-    <div className='mx-auto w-full max-w-screen-2xl px-2 py-16'>
+    <div className='mx-auto w-full max-w-screen-2xl px-2 py-4'>
       <Header title='Events' description='' />
       <EventList serverDetails={events} />
     </div>

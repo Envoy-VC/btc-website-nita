@@ -1,6 +1,8 @@
 import React from 'react';
+import MobileNavbar from '~/app/(user)/components/sidebar/mobile';
 
 import { Navbar } from '~/components';
+import { homePageItems } from '~/lib/data';
 
 export const metadata = {
   title: 'Club Page',
@@ -11,8 +13,11 @@ export const metadata = {
 const EventsLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <div className='flex flex-col'>
-      <Navbar />
-      {children}
+      <div className='hidden lg:flex'>
+        <Navbar />
+      </div>
+      <MobileNavbar items={homePageItems} />
+      <div className='py-20 lg:py-0'>{children}</div>
     </div>
   );
 };
