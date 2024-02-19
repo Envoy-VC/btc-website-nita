@@ -119,7 +119,7 @@ export const deleteForm = async (form_id: string) => {
   return res.data;
 };
 
-export const getFormResponses = cache(async (form_id: string) => {
+export const getUserFormResponses = cache(async (form_id: string) => {
   const formResponses: UserResponse[] = [];
   const supabase = await createSupabaseServerClient();
   const res = await supabase
@@ -154,3 +154,19 @@ export const getFormResponses = cache(async (form_id: string) => {
 
   return formResponses;
 });
+
+export const getFormResponses = async (form_id: string) => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase
+    .from('form_responses')
+    .select('*')
+    .eq('form_id', form_id);
+
+  if (res.error) {
+    return [];
+  }
+
+  const data = res.data;
+
+  return data;
+};
