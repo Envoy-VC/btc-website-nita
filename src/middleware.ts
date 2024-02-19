@@ -40,6 +40,7 @@ export default authMiddleware({
     });
   },
   publicRoutes: ['/', /^\/api.*$/, /^\/clubs.*$/, /^\/events.*$/],
+  ignoredRoutes: ['/api/og'],
 });
 
 export const config = {

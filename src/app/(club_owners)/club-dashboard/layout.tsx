@@ -9,6 +9,29 @@ import MobileNavbar from '~/app/(user)/components/sidebar/mobile';
 import { clubDashboardSidebarNavItems as items } from '~/lib/data';
 import { LoadingSpinner } from '~/components';
 
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Club Dashboard',
+  description:
+    'Access your club dashboard at BTC Gymkhana Technical. Manage events, track member activity, and stay organized effortlessly.',
+  openGraph: {
+    title: 'Club Dashboard',
+    description:
+      'Access your club dashboard at BTC Gymkhana Technical. Manage events, track member activity, and stay organized effortlessly.',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://btc.gymkhananita.com/club-dashboard',
+    images: [
+      {
+        url: '/api/og?title=🖥️ Club Dashboard',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
+
 const ClubDashboardLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <div className='flex flex-col lg:flex-row'>
