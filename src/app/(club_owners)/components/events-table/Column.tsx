@@ -111,19 +111,31 @@ export const columns: ColumnDef<Event>[] = [
               <DropdownMenuSeparator />
 
               <DropdownMenuItem className='cursor-pointer'>
-                <Link href={`/club-dashboard/events/${event.event_id}/edit`}>
+                <Link
+                  href={`/events/${event.event_id}`}
+                  className='w-full'
+                  target='_blank'
+                >
+                  View Event Page
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                <Link
+                  href={`/club-dashboard/events/${event.event_id}/edit`}
+                  className='w-full'
+                >
                   Edit
                 </Link>
               </DropdownMenuItem>
 
               <DropdownMenuItem className='cursor-pointer'>
-                <Link href={`/club-dashboard/events/${event.event_id}`}>
+                <Link
+                  href={`/club-dashboard/events/${event.event_id}`}
+                  className='w-full'
+                >
                   View Analytics
                 </Link>
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className='cursor-pointer'>
-                <Link href={`/events/${event.event_id}`}>Event Page</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

@@ -51,7 +51,8 @@ export const getApprovedEventDetails = async (event_id: string) => {
   const res = await supabase
     .from('events')
     .select('*')
-    .eq('event_id', event_id);
+    .eq('event_id', event_id)
+    .eq('is_public', true);
 
   if (res.error) {
     return null;
@@ -63,11 +64,7 @@ export const getApprovedEventDetails = async (event_id: string) => {
     return null;
   }
 
-  if (event.is_approved && event.is_public) {
-    return event;
-  } else {
-    return null;
-  }
+  return event;
 };
 
 export const updateEventDetails = async (
@@ -126,8 +123,8 @@ export const getApprovedEventsForClub = cache(async (club_id: string) => {
     .from('events')
     .select('*')
     .eq('club_id', club_id)
-    .eq('is_public', true)
-    .eq('is_approved', true);
+    .eq('is_public', true);
+  // .eq('is_approved', true);
 
   if (res.error) {
     return [];

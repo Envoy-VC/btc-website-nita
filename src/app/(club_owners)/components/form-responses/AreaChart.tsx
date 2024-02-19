@@ -60,6 +60,7 @@ const AreaChart = ({ data }: Props) => {
         <Area
           type='monotone'
           dataKey='value'
+          label='Responses'
           stroke='#007DFF'
           className='fill-primary'
         />

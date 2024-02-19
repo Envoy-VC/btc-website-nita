@@ -105,13 +105,29 @@ export const columns: ColumnDef<Form>[] = [
               <DropdownMenuSeparator />
 
               <DropdownMenuItem className='cursor-pointer'>
-                <Link href={`/club-dashboard/forms/${form.form_id}/edit`}>
+                <Link
+                  href={`/forms/${form.form_id}`}
+                  target='_blank'
+                  className='w-full'
+                >
+                  Go to Form Page
+                </Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem className='cursor-pointer'>
+                <Link
+                  href={`/club-dashboard/forms/${form.form_id}/edit`}
+                  className='w-full'
+                >
                   Edit
                 </Link>
               </DropdownMenuItem>
 
               <DropdownMenuItem className='cursor-pointer'>
-                <Link href={`/club-dashboard/forms/${form.form_id}`}>
+                <Link
+                  href={`/club-dashboard/forms/${form.form_id}`}
+                  className='w-full'
+                >
                   View Analytics
                 </Link>
               </DropdownMenuItem>

@@ -57,7 +57,7 @@ const FormResponses = async ({ form }: Props) => {
       : ((data.today - data.yesterday) / data.yesterday) * 100;
 
   return (
-    <div>
+    <div className='space-y-4'>
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
         <MetricCard
           title='Total Responses'
