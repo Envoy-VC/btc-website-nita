@@ -8,7 +8,10 @@ import { PageProgress } from '~/components';
 import { LoadingScreen } from '~/screens';
 import type { Metadata } from 'next';
 
+import { env } from '~/env';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(env.NEXT_PUBLIC_OG_BASE_URL),
   title: {
     template: '%s | Gymkhana Technical',
     default: 'Gymkhana Technical',
@@ -43,7 +46,7 @@ export const metadata: Metadata = {
     url: 'https://btc.gymkhananita.com',
     images: [
       {
-        url: '/api/og',
+        url: `/api/og`,
         width: 1200,
         height: 630,
       },
