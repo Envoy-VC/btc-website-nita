@@ -70,7 +70,7 @@ type Props = {
   searchParams: Record<string, string | string[] | undefined>;
 };
 
-const Form = async ({ params, searchParams }: Props) => {
+const Form = async () => {
   const headersList = headers();
   const path = headersList.get('x-pathname');
   const formId = (path ?? '').split('/').pop() ?? '';

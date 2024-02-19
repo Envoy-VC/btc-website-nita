@@ -80,6 +80,7 @@ export type Database = {
           event_name: string;
           feedback_form: string;
           is_approved: boolean;
+          is_featured: boolean;
           is_public: boolean;
           owner_id: string | null;
           registration_end_at: string;
@@ -100,6 +101,7 @@ export type Database = {
           event_name?: string;
           feedback_form?: string;
           is_approved?: boolean;
+          is_featured?: boolean;
           is_public?: boolean;
           owner_id?: string | null;
           registration_end_at?: string;
@@ -120,6 +122,7 @@ export type Database = {
           event_name?: string;
           feedback_form?: string;
           is_approved?: boolean;
+          is_featured?: boolean;
           is_public?: boolean;
           owner_id?: string | null;
           registration_end_at?: string;
@@ -154,6 +157,7 @@ export type Database = {
           form_id: string;
           response_id: string;
           updated_at: string;
+          user_details: Json;
           user_id: string;
         };
         Insert: {
@@ -162,6 +166,7 @@ export type Database = {
           form_id?: string;
           response_id?: string;
           updated_at?: string;
+          user_details: Json;
           user_id: string;
         };
         Update: {
@@ -170,6 +175,7 @@ export type Database = {
           form_id?: string;
           response_id?: string;
           updated_at?: string;
+          user_details?: Json;
           user_id?: string;
         };
         Relationships: [

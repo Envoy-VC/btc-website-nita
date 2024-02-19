@@ -8,9 +8,9 @@ import {
   getCoreRowModel,
   useReactTable,
   getPaginationRowModel,
-  SortingState,
+  type SortingState,
   getSortedRowModel,
-  ColumnFiltersState,
+  type ColumnFiltersState,
   getFilteredRowModel,
 } from '@tanstack/react-table';
 

@@ -74,7 +74,7 @@ export async function generateMetadata(
   return metadata;
 }
 
-const EventPage = async ({ params, searchParams }: Props) => {
+const EventPage = async () => {
   const headersList = headers();
   const path = headersList.get('x-pathname');
   const event_id = (path ?? '').split('/').pop() ?? '';

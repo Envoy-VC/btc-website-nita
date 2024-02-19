@@ -7,10 +7,11 @@ import { PDFDownloadLink } from '@react-pdf/renderer';
 
 import FormDocument from '../form-document';
 
-import { getUserFormResponses } from '~/lib/supabase/forms';
+import type { FormResponse } from '~/types';
 
 interface Props {
   form: Form;
+  responses: FormResponse[];
 }
 
 import { createElement } from 'react';
@@ -24,48 +25,27 @@ export const renderPDF = async (props: FormDocumentProps) => {
 };
 
 import { Button } from '~/components/ui/button';
-import type { FormType } from '~/lib/zod/form';
+import type { QuestionsType } from '~/lib/zod/form';
 
-const DownloadResponsesButton = ({ form }: Props) => {
-  const [isGenerating, setIsGenerating] = React.useState<boolean>(false);
-  const [props, setProps] = React.useState<FormDocumentProps | null>(null);
-  const onClick = async () => {
-    try {
-      setIsGenerating(true);
-      const responses = await getUserFormResponses(form.form_id);
-      const props: FormDocumentProps = {
-        title: form.title,
-        responses,
-        questions: form.questions as unknown as FormType['questions'],
-      };
-      console.log(props);
-
-      setProps(props);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
+const DownloadResponsesButton = ({ form, responses }: Props) => {
   return (
     <div>
-      {props ? (
-        <PDFDownloadLink
-          document={<FormDocument {...props} />}
-          fileName='responses.pdf'
-        >
-          {({ loading }) => (
-            <Button disabled={loading}>
-              {loading ? 'Generating PDF...' : 'Download Responses'}
-            </Button>
-          )}
-        </PDFDownloadLink>
-      ) : (
-        <Button onClick={onClick} disabled={isGenerating}>
-          {isGenerating ? 'Generating PDF...' : 'Generate PDF'}
-        </Button>
-      )}
+      <PDFDownloadLink
+        document={
+          <FormDocument
+            title={form.title}
+            questions={form.questions as QuestionsType[]}
+            responses={responses}
+          />
+        }
+        fileName='responses.pdf'
+      >
+        {({ loading }) => (
+          <Button disabled={loading}>
+            {loading ? 'Generating PDF...' : 'Download Responses'}
+          </Button>
+        )}
+      </PDFDownloadLink>
     </div>
   );
 };

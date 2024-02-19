@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { EventCard, MarkdownRenderer } from '~/components';
+import { MarkdownRenderer } from '~/components';
 import AnnouncementPill from './AnnouncementPill';
 import SocialLinkPill from './SocialLinkPill';
 

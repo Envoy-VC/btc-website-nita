@@ -3,6 +3,7 @@ import React from 'react';
 import { BTCLogo } from '~/assets';
 
 import type { FormType } from '~/lib/zod/form';
+import type { User } from '~/types';
 
 import { formatResponses } from '~/lib/utils';
 
@@ -33,23 +34,12 @@ const tw = createTw({
 });
 
 import { Image as ReactPDFImage } from '@react-pdf/renderer';
+import type { FormResponse } from '~/types';
 
 export interface FormDocumentProps {
   title: string;
   questions: FormType['questions'];
-  responses: UserResponse[];
-}
-
-export interface UserResponse {
-  details: {
-    name: string;
-    college: string;
-    branch: string;
-    graduation_year: string;
-    phone_number: string;
-    email: string;
-  };
-  response: Record<string, string | number | string[] | boolean | undefined>;
+  responses: FormResponse[];
 }
 
 export const FormDocument = ({
@@ -92,7 +82,7 @@ export const FormDocument = ({
           </View>
         </View>
         {responses.map((response, index) => (
-          <UserResponse key={index} {...response} questions={questions} />
+          <UserResponse key={index} response={response} questions={questions} />
         ))}
         <Text
           style={tw(
@@ -108,12 +98,20 @@ export const FormDocument = ({
   );
 };
 
-const UserResponse = ({
-  details,
-  questions,
-  response,
-}: UserResponse & { questions: FormType['questions'] }) => {
-  const data = formatResponses(questions, response);
+interface UserResponseProps {
+  questions: FormType['questions'];
+  response: FormResponse;
+}
+const UserResponse = ({ questions, response }: UserResponseProps) => {
+  const data = formatResponses(
+    questions,
+    response.form_data as Record<
+      string,
+      string | number | string[] | boolean | undefined
+    >
+  );
+
+  const details = response.user_details as User;
 
   return (
     <View style={tw('border-t border-b border-neutral-200 py-4')}>
@@ -129,7 +127,7 @@ const UserResponse = ({
             College:
           </Text>
           <Text style={tw('text-[1rem] text-neutral-500')}>
-            {details.college}
+            {details.college_name}
           </Text>
         </View>
         <View style={tw('flex flex-row items-center gap-2')}>
@@ -145,7 +143,7 @@ const UserResponse = ({
             Graduation Year:
           </Text>
           <Text style={tw('text-[1rem] text-neutral-500')}>
-            {details.graduation_year}
+            {details.expected_graduation}
           </Text>
         </View>
         <View style={tw('flex flex-row items-center gap-2')}>
@@ -161,7 +159,7 @@ const UserResponse = ({
             Email-Id:
           </Text>
           <Text style={tw('text-[1rem] text-neutral-500')}>
-            {details.email}
+            {details.email_id}
           </Text>
         </View>
       </View>
@@ -195,6 +193,5 @@ Font.register({
   family: 'Geist Regular',
   src: 'https://svofmwoukzjgqheplyds.supabase.co/storage/v1/object/public/club_details/fonts/Geist-Bold.otf',
 });
-const styles = StyleSheet.create({});
 
 export default FormDocument;

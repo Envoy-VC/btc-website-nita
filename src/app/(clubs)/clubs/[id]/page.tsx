@@ -81,7 +81,7 @@ export async function generateMetadata(
   return metadata;
 }
 
-const ClubPage = async ({ params, searchParams }: Props) => {
+const ClubPage = async () => {
   const headersList = headers();
   const path = headersList.get('x-pathname');
   const clubId = (path ?? '').split('/').pop() ?? '';

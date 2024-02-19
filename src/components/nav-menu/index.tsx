@@ -114,7 +114,7 @@ interface Props {
   description?: string;
 }
 
-const ListItem = ({ title, href, Icon }: Props) => {
+const ListItem = ({ title, href }: Props) => {
   return (
     <NavigationMenuLink asChild>
       <Button variant='ghost' asChild className='w-full'>

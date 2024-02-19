@@ -12,7 +12,6 @@ import { AspectRatio } from '~/components/ui/aspect-ratio';
 import { HiOutlineUpload, HiOutlineSwitchHorizontal } from 'react-icons/hi';
 
 import { Button } from '~/components/ui/button';
-import { env } from '~/env';
 import { getImageLink } from '~/lib/utils';
 
 interface Props

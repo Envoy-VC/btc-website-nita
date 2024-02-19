@@ -18,8 +18,6 @@ import {
 
 import { useAuth } from '@clerk/nextjs';
 
-import { CalendarDateTime } from '@internationalized/date';
-
 import { Switch } from '~/components/ui/switch';
 import { Textarea } from '~/components/ui/textarea';
 import { Input } from '~/components/ui/input';

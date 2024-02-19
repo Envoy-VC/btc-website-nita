@@ -3,8 +3,6 @@
 import { cache } from 'react';
 import createSupabaseServerClient from '../client/server';
 
-import { getActiveClubById } from '../clubs';
-
 import type { Event } from '~/types';
 
 export const createEventForClub = async (club_id: string, owner_id: string) => {
@@ -97,6 +95,13 @@ export const getEventsForClub = cache(async (club_id: string) => {
 
 export const deleteEvent = async (event_id: string) => {
   const supabase = await createSupabaseServerClient();
+  // delete event image first from storage
+  const eventDetails = await getEventDetails(event_id);
+  if (eventDetails?.event_image) {
+    const fullPath = eventDetails.event_image.split('?')[0]!;
+    const path = fullPath.split('/').pop()!;
+    await supabase.storage.from('club_details').remove([path]);
+  }
   const res = await supabase.from('events').delete().eq('event_id', event_id);
 
   if (res.error) {

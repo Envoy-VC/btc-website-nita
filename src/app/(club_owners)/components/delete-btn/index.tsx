@@ -14,7 +14,6 @@ import { AiOutlineLoading } from 'react-icons/ai';
 
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,

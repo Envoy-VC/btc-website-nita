@@ -219,7 +219,7 @@ export const formatResponses = (
 ): ResponseType[] => {
   const formattedResponses: ResponseType[] = [];
 
-  questions.forEach((question, index) => {
+  questions.forEach((question) => {
     const answer = responses[question.name];
     const formattedAnswer = formatAnswer(answer, question.type);
 

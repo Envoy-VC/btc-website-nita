@@ -52,7 +52,7 @@ const FormResponses = async ({ form }: Props) => {
 
   // percentage is + or - infinity fix it
   const percentageIncrease =
-    data.today === 0
+    data.today === 0 || data.yesterday === 0
       ? 0
       : ((data.today - data.yesterday) / data.yesterday) * 100;
 
@@ -86,7 +86,7 @@ const FormResponses = async ({ form }: Props) => {
           <AreaChart data={responses} />
         </CardContent>
       </Card>
-      <DownloadResponsesButton form={form} />
+      <DownloadResponsesButton form={form} responses={responses} />
     </div>
   );
 };
