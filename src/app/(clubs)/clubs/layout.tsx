@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     'Explore diverse clubs at NIT Agartala. Find your interests, connect with like-minded peers, and enrich your college experience.',
   twitter: {
     card: 'summary_large_image',
-    title: 'Club Dashboard',
+    title: 'Clubs | Gymkhana Technical',
     description:
       'Explore diverse clubs at NIT Agartala. Find your interests, connect with like-minded peers, and enrich your college experience.',
     creator: '@Envoy_1084',

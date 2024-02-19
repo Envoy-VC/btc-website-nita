@@ -7,6 +7,7 @@ import { GeistSans } from 'geist/font/sans';
 import { PageProgress } from '~/components';
 import { LoadingScreen } from '~/screens';
 import type { Metadata } from 'next';
+import type { Viewport } from 'next';
 
 import { env } from '~/env';
 
@@ -59,6 +60,10 @@ export const metadata: Metadata = {
       },
     ],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: 'white',
 };
 
 export default function RootLayout({
