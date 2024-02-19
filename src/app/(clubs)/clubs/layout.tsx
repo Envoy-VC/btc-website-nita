@@ -12,6 +12,20 @@ export const metadata: Metadata = {
   title: 'Clubs',
   description:
     'Explore diverse clubs at NIT Agartala. Find your interests, connect with like-minded peers, and enrich your college experience.',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Club Dashboard',
+    description:
+      'Explore diverse clubs at NIT Agartala. Find your interests, connect with like-minded peers, and enrich your college experience.',
+    creator: '@Envoy_1084',
+    images: [
+      {
+        url: '/api/og?title=🏫 Clubs',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
   openGraph: {
     title: 'Clubs | Gymkhana Technical',
     description:

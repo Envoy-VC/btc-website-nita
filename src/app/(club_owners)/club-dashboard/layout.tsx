@@ -15,6 +15,20 @@ export const metadata: Metadata = {
   title: 'Club Dashboard',
   description:
     'Access your club dashboard at BTC Gymkhana Technical. Manage events, track member activity, and stay organized effortlessly.',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Club Dashboard',
+    description:
+      'Access your club dashboard at BTC Gymkhana Technical. Manage events, track member activity, and stay organized effortlessly.',
+    creator: '@Envoy_1084',
+    images: [
+      {
+        url: '/api/og?title=🖥️ Club Dashboard',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
   openGraph: {
     title: 'Club Dashboard',
     description:

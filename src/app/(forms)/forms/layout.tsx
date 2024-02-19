@@ -10,6 +10,20 @@ export const metadata: Metadata = {
   title: 'Forms',
   description:
     'Browse through forms for event registrations and more. Streamline your participation process effortlessly.',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Forms | Gymkhana Technical',
+    description:
+      'Browse through forms for event registrations and more. Streamline your participation process effortlessly.',
+    creator: '@Envoy_1084',
+    images: [
+      {
+        url: '/api/og?title=📝 Forms',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
   openGraph: {
     title: 'Forms | Gymkhana Technical',
     description:

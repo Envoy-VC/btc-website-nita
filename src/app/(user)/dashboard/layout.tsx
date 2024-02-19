@@ -10,6 +10,20 @@ export const metadata: Metadata = {
   title: 'Dashboard',
   description:
     'Access your personalized dashboard. Manage event registrations, view analytics, and stay updated on campus activities—all in one convenient place.',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Dashboard | Gymkhana Technical',
+    description:
+      'Access your personalized dashboard. Manage event registrations, view analytics, and stay updated on campus activities—all in one convenient place.',
+    creator: '@Envoy_1084',
+    images: [
+      {
+        url: '/api/og?title=📊 Dashboard',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
   openGraph: {
     title: 'Dashboard | Gymkhana Technical',
     description:

@@ -36,7 +36,13 @@ export const metadata: Metadata = {
     description:
       'Experience BTC Gymkhana Technical: Register for events, explore clubs, and dive into college life! Join the excitement today!',
     creator: '@Envoy_1084',
-    images: ['/api/og'],
+    images: [
+      {
+        url: `/api/og`,
+        width: 1200,
+        height: 630,
+      },
+    ],
   },
   openGraph: {
     title: 'Gymkhana Technical',
