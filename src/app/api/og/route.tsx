@@ -5,14 +5,6 @@ export const runtime = 'edge';
 
 export async function GET(request: Request) {
   try {
-    const regular = await fetch(
-      new URL('./Geist-Regular.otf', import.meta.url)
-    ).then((res) => res.arrayBuffer());
-
-    const medium = await fetch(
-      new URL('./Geist-Medium.otf', import.meta.url)
-    ).then((res) => res.arrayBuffer());
-
     const semibold = await fetch(
       new URL('./Geist-SemiBold.otf', import.meta.url)
     ).then((res) => res.arrayBuffer());
@@ -101,14 +93,6 @@ export async function GET(request: Request) {
         width: 1200,
         height: 630,
         fonts: [
-          {
-            name: 'Geist Regular',
-            data: regular,
-          },
-          {
-            name: 'Geist Medium',
-            data: medium,
-          },
           {
             name: 'Geist SemiBold',
             data: semibold,
