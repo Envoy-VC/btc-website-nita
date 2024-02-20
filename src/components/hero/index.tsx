@@ -11,7 +11,7 @@ import { InfiniteMovingCards } from './InfiniteCards';
 
 const Hero = () => {
   return (
-    <div className='relative flex h-[60dvh] w-full items-center justify-center lg:h-[80dvh]'>
+    <div className='relative flex h-screen w-full items-center justify-center'>
       <Image
         src={HeroBG.src}
         alt='Hero background'
