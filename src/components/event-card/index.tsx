@@ -20,7 +20,9 @@ const EventCard = ({ event }: Props) => {
       }}
     >
       <Image
-        src={getImageLink(event.event_image) ?? ''}
+        src={
+          getImageLink(event.event_image) ?? `/api/og?title=${event.event_name}`
+        }
         width={500}
         height={300}
         alt='Event'

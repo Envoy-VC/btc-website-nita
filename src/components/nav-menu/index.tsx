@@ -96,6 +96,13 @@ const NavMenu = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <Link href='/clubs' legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              All Clubs
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <Link href='/events' legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Events

@@ -2,7 +2,6 @@
 
 import type { ClubDetailsType, ClubSocialsType } from '~/lib/zod';
 import createSupabaseServerClient from '../client/server';
-import { env } from '~/env';
 
 export const getClubForOwner = async (owner_id: string) => {
   const supabase = await createSupabaseServerClient();
