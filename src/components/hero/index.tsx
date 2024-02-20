@@ -22,7 +22,7 @@ const Hero = () => {
       <div className='absolute top-0 mx-auto flex h-full w-full max-w-screen-md flex-col lg:max-w-screen-xl'>
         <div className='flex h-full w-full flex-col lg:flex-row'>
           <div className='flex h-full w-full basis-1/2 flex-col justify-center gap-4 px-3 py-16'>
-            <h1 className='text-5xl font-bold lg:text-7xl'>
+            <h1 className='text-[2.5rem] font-bold leading-[1] lg:text-7xl'>
               Your gateway to campus events and clubs.
             </h1>
             <h2 className='text-xl text-neutral-600'>
