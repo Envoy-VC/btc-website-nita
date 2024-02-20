@@ -9,6 +9,8 @@ import CustomForm from '../components/Form';
 import { notFound } from 'next/navigation';
 
 import type { Metadata, ResolvingMetadata } from 'next';
+import RoleProtect from '~/components/role-protect';
+import { Role } from '~/types';
 
 export async function generateMetadata(
   { params }: Props,
@@ -75,14 +77,17 @@ const Form = async () => {
   const path = headersList.get('x-pathname');
   const formId = (path ?? '').split('/').pop() ?? '';
   const form = await getFormById(formId);
+
   if (form) {
     return (
       <div className='px-3'>
-        <CustomForm
-          uiSchema={buildUISchema(form as unknown as FormType)}
-          schema={toJsonSchema(form as unknown as FormType)}
-          form_id={form.form_id}
-        />
+        <RoleProtect role={Role.USER} message='Login to Access the Form'>
+          <CustomForm
+            uiSchema={buildUISchema(form as unknown as FormType)}
+            schema={toJsonSchema(form as unknown as FormType)}
+            form_id={form.form_id}
+          />
+        </RoleProtect>
       </div>
     );
   } else {

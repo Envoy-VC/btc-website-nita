@@ -10,9 +10,10 @@ import Link from 'next/link';
 
 interface Props extends React.PropsWithChildren {
   role: Role;
+  message?: string;
 }
 
-const RoleProtect = ({ children, role }: Props) => {
+const RoleProtect = ({ children, role, message }: Props) => {
   const { sessionClaims } = auth();
   const metadata = (sessionClaims as CustomJwtSessionClaims)?.metadata;
   const currentRole = metadata?.role as Role;
@@ -31,7 +32,7 @@ const RoleProtect = ({ children, role }: Props) => {
             className='w-full max-w-xs sm:max-w-sm'
           />
           <h1 className='mt-4 text-center text-2xl font-semibold text-primary'>
-            Unauthorized Access
+            {message ?? 'Unauthorized Access'}
           </h1>
           <Button asChild className='mx-auto w-fit'>
             <Link href='/'>Go back to home</Link>

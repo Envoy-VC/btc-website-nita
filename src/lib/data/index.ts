@@ -125,6 +125,11 @@ export const homePageItems: SideNavItem[] = [
     href: '/clubs',
   },
   {
+    name: 'All Forms',
+    Icon: PiScrollBold,
+    href: '/forms',
+  },
+  {
     name: 'Dashboard',
     Icon: RxDashboard,
     href: '/dashboard',

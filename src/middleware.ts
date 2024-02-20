@@ -39,7 +39,13 @@ export default authMiddleware({
       },
     });
   },
-  publicRoutes: ['/', /^\/api.*$/, /^\/clubs.*$/, /^\/events.*$/, '/forms'],
+  publicRoutes: [
+    '/',
+    /^\/api.*$/,
+    /^\/clubs.*$/,
+    /^\/events.*$/,
+    /^\/forms.*$/,
+  ],
   ignoredRoutes: ['/api/og'],
 });
 

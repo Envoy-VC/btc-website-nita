@@ -25,11 +25,14 @@ export const columns: ColumnDef<Form>[] = [
       );
     },
     cell: ({ row }) => {
-      const title: string = row.getValue('title');
-      const id: string = row.getValue('form_id');
+      const form = row.original;
       return (
-        <Link href={`/forms/${id}`} className='h-full py-3'>
-          {title}
+        <Link
+          href={`/forms/${form.form_id}`}
+          className='h-full'
+          target='_blank'
+        >
+          {form.title}
         </Link>
       );
     },

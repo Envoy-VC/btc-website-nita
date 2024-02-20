@@ -25,7 +25,11 @@ const CustomForm = ({ schema, uiSchema, form_id }: Props) => {
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false);
 
   const onSubmit = async (data: IChangeEvent) => {
-    if (!userId) return;
+    if (!userId) {
+      toast.error('Please login to submit the form');
+      return;
+    }
+
     try {
       setIsSubmitting(true);
       await createFormResponse(form_id, userId, data.formData as object);
