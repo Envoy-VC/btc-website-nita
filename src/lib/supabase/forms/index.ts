@@ -136,3 +136,19 @@ export const getFormResponses = async (form_id: string) => {
 
   return data;
 };
+
+
+export const getActiveForms = async () => {
+  const supabase = await createSupabaseServerClient();
+  const res = await supabase
+    .from('forms')
+    .select('*')
+    .gte('end_datetime', new Date().toISOString())
+    .lte('start_datetime', new Date().toISOString());
+
+  if (res.error) {
+    return [];
+  }
+
+  return res.data;
+}
