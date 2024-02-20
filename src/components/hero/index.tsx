@@ -38,7 +38,7 @@ const Hero = () => {
                 className='font-semibold transition-all duration-300 ease-in-out hover:bg-white'
               >
                 <Link
-                  href='/event'
+                  href='/events'
                   className='group flex flex-row items-center gap-2 '
                 >
                   Find New Events
