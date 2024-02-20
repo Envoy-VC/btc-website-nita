@@ -137,7 +137,6 @@ export const getFormResponses = async (form_id: string) => {
   return data;
 };
 
-
 export const getActiveForms = async () => {
   const supabase = await createSupabaseServerClient();
   const res = await supabase
@@ -151,4 +150,4 @@ export const getActiveForms = async () => {
   }
 
   return res.data;
-}
+};
