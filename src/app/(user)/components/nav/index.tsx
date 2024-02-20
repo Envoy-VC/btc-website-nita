@@ -41,7 +41,10 @@ export const ActionBar = async () => {
               className='flex flex-row items-center rounded-lg border-[1px] border-neutral-300 px-5 py-1'
             >
               <Avatar className='h-8 w-8'>
-                <AvatarImage src={user?.imageUrl} />
+                <AvatarImage
+                  src={user?.imageUrl}
+                  alt={`${user?.firstName} ${user?.lastName} Avatar`}
+                />
               </Avatar>{' '}
               <div className='flex flex-col px-2'>
                 <span className='text-sm font-semibold text-neutral-700'>

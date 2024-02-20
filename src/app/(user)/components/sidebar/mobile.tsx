@@ -35,6 +35,7 @@ const MobileNavbar = ({ items }: Props) => {
             <SheetTrigger asChild>
               <Button size='icon' className='rounded-lg p-2' variant='link'>
                 <HiMenuAlt2 size={24} className='text-neutral-700' />
+                <span className='sr-only'>Toggle Sidebar</span>
               </Button>
             </SheetTrigger>
             <SheetContent side='left' className='px-3'>
