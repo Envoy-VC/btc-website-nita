@@ -25,12 +25,7 @@ export default function AddToMobile(props: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button
-          className='flex flex-row gap-2'
-          size='icon'
-          variant='ghost'
-          onClick={props.onClick}
-        >
+        <Button className='flex flex-row gap-2' size='icon' variant='ghost'>
           <MdOutlineInstallMobile />
         </Button>
       </DialogTrigger>

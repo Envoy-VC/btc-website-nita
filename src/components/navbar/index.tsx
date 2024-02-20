@@ -6,6 +6,7 @@ import { BTCLogo } from '~/assets';
 import NavMenu from '../nav-menu';
 
 import { ActionBar } from '~/app/(user)/components/nav';
+import AddToHomeScreen from '../install-pwa';
 
 const Navbar = () => {
   return (
@@ -26,7 +27,10 @@ const Navbar = () => {
       <div className='hidden md:block'>
         <NavMenu />
       </div>
-      <ActionBar />
+      <div className='flex flex-row items-center gap-2'>
+        <AddToHomeScreen />
+        <ActionBar />
+      </div>
     </nav>
   );
 };

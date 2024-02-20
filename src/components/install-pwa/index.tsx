@@ -49,7 +49,7 @@ export default function AddToHomeScreen() {
 
     if (addToHomeScreenButtonCookie !== 'dontShow') {
       // Only show prompt if user is on mobile and app is not installed
-      if (isMobile && !isStandalone) {
+      if (!isStandalone) {
         if (userAgent === 'Safari') {
           setDisplayPrompt('safari');
         } else if (userAgent === 'Chrome') {
@@ -86,9 +86,9 @@ export default function AddToHomeScreen() {
     };
   }, []);
 
-  const onClick = () => {
+  const onClick = async () => {
     if (pwaPrompt) {
-      void pwaPrompt.prompt();
+      await pwaPrompt.prompt();
     }
   };
 
