@@ -21,6 +21,7 @@ import { ActionBar } from '../nav';
 import Link from 'next/link';
 
 import type { SideNavItem } from '~/types';
+import AddToHomeScreen from '~/components/install-pwa';
 
 interface Props {
   items: SideNavItem[];
@@ -84,7 +85,8 @@ const MobileNavbar = ({ items }: Props) => {
             />
           </Link>
         </div>
-        <div className='flex lg:hidden'>
+        <div className='flex flex-row items-center gap-2 lg:hidden'>
+          <AddToHomeScreen />
           <ActionBar />
         </div>
       </div>

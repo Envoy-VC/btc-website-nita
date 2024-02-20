@@ -29,7 +29,10 @@ export const metadata: Metadata = {
   ],
   creator: 'Vedant Chainani',
   publisher: 'Gymkhana Technical',
-  icons: [{ rel: 'icon', url: '/icon.png' }],
+  icons: [
+    { rel: 'icon', url: '/icon.png' },
+    { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
+  ],
   manifest: '/manifest.json',
   twitter: {
     card: 'summary_large_image',
@@ -59,6 +62,13 @@ export const metadata: Metadata = {
         height: 630,
       },
     ],
+  },
+  other: {
+    'msapplication-tap-highlight': 'no',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-title': 'Gymkhana Technical',
+    'msapplication-TileColor': '#fff',
   },
 };
 
