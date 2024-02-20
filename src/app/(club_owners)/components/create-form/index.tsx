@@ -60,6 +60,7 @@ const CreateForm = ({ serverDetails }: Props) => {
       end_datetime: getCalenderDateTime(serverDetails.end_datetime),
       questions: serverDetails.questions as QuestionsType[],
       is_public: serverDetails.is_public,
+      type: serverDetails.type as FormType['type'],
     },
   });
 
@@ -137,6 +138,34 @@ const CreateForm = ({ serverDetails }: Props) => {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            disabled={form.formState.isSubmitting}
+            name={`type`}
+            render={({ field }) => (
+              <FormItem className='flex w-full flex-col'>
+                <FormLabel>Form Type</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder='Select your College' />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value='registration'>
+                      Registration Form
+                    </SelectItem>
+                    <SelectItem value='feedback'>Feedback Form</SelectItem>
+                    <SelectItem value='other'>Other</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <div className='flex w-full flex-col gap-4 lg:flex-row'>
             <FormField
               control={form.control}
@@ -203,7 +232,7 @@ const CreateForm = ({ serverDetails }: Props) => {
                         >
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue placeholder='Select your College' />
+                              <SelectValue placeholder='Select question type' />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>

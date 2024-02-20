@@ -97,6 +97,7 @@ export const formSchema = z.object({
   start_datetime: z.instanceof(CalendarDateTime).optional(),
   end_datetime: z.instanceof(CalendarDateTime).optional(),
   is_public: z.boolean({ required_error: '' }).optional(),
+  type: z.enum(['registration', 'feedback', 'other']).default('other'),
 });
 
 export const questionTypes = [

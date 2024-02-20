@@ -207,6 +207,7 @@ export type Database = {
           questions: Json;
           start_datetime: string;
           title: string;
+          type: string;
           updated_at: string | null;
         };
         Insert: {
@@ -220,6 +221,7 @@ export type Database = {
           questions?: Json;
           start_datetime?: string;
           title?: string;
+          type?: string;
           updated_at?: string | null;
         };
         Update: {
@@ -233,6 +235,7 @@ export type Database = {
           questions?: Json;
           start_datetime?: string;
           title?: string;
+          type?: string;
           updated_at?: string | null;
         };
         Relationships: [
