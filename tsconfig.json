@@ -39,5 +39,5 @@
     ".next/types/**/*.ts",
     "pdf.worker.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "public"]
 }
