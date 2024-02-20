@@ -5,7 +5,8 @@ import NotFoundImage from './404.jpeg';
 import OnboardingImage from './onboarding.jpeg';
 import UnauthorizedImage from './unauthorized.jpg';
 import SatyaNadellaImage from './satya-nadella-image.webp';
-import HeroBG from './hero-bg.avif';
+import BlueArrowBG from './blue-arrow-bg.avif';
+import GrayArrowBG from './gray-arrow-bg.avif';
 
 export {
   BTCLogo,
@@ -15,5 +16,6 @@ export {
   OnboardingImage,
   UnauthorizedImage,
   SatyaNadellaImage,
-  HeroBG,
+  BlueArrowBG,
+  GrayArrowBG,
 };

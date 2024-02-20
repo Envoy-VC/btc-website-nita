@@ -2,7 +2,7 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import { HeroBG } from '~/assets';
+import { BlueArrowBG } from '~/assets';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 
@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <div className='relative flex h-screen w-full items-center justify-center'>
       <Image
-        src={HeroBG.src}
+        src={BlueArrowBG.src}
         alt='Hero background'
         className='h-full w-full object-cover'
         width={1000}
@@ -51,7 +51,7 @@ const Hero = () => {
           </div>
           <div className='hidden h-full w-full basis-1/2 items-center justify-center px-6 lg:flex'>
             <CardContainer className='inter-var'>
-              <CardBody className='group/card relative h-auto  w-auto rounded-xl border border-black/[0.05] bg-white p-6 dark:border-white/[0.2] dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] sm:w-[30rem]  '>
+              <CardBody className='group/card relative h-auto  w-auto rounded-xl border border-black/[0.05] bg-white/55 p-6 dark:border-white/[0.2] dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] sm:w-[30rem]  '>
                 <CardItem
                   translateZ='50'
                   className='text-xl font-bold text-neutral-900 dark:text-white'
