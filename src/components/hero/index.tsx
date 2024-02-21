@@ -89,7 +89,7 @@ const Hero = async () => {
                   </CardItem>
                   <CardItem translateZ={20} as='div'>
                     <Button asChild>
-                      <Link href='/sign-n'>Get Started</Link>
+                      <Link href='/sign-in'>Get Started</Link>
                     </Button>
                   </CardItem>
                 </div>
