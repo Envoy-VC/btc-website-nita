@@ -14,7 +14,10 @@ import { getActiveClubs } from '~/lib/supabase/clubs';
 const Hero = async () => {
   const clubs = await getActiveClubs();
   return (
-    <div className='relative flex h-screen w-full items-center justify-center'>
+    <section
+      className='relative flex h-[90dvh] w-full items-center justify-center lg:h-screen'
+      id='hero'
+    >
       <Image
         src={BlueArrowBG.src}
         alt='Hero background'
@@ -103,7 +106,7 @@ const Hero = async () => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

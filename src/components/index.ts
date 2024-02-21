@@ -5,6 +5,8 @@ import MarkdownRenderer from './markdown-renderer';
 import LoadingSpinner from './loading-spinner';
 import Header from './header';
 import Hero from './hero';
+import Footer from './footer';
+import FeaturedEvents from './featured-events';
 
 export {
   PageProgress,
@@ -14,4 +16,6 @@ export {
   LoadingSpinner,
   Header,
   Hero,
+  Footer,
+  FeaturedEvents,
 };
