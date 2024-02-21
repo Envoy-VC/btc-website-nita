@@ -1,7 +1,10 @@
 'use client';
 
-import { cn } from '~/lib/utils';
+import { cn, getImageLink } from '~/lib/utils';
 import React, { useEffect, useState } from 'react';
+import type { Club } from '~/types';
+import Image from 'next/image';
+import { BTCLogo } from '~/assets';
 
 export const InfiniteMovingCards = ({
   items,
@@ -10,11 +13,7 @@ export const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
 }: {
-  items: {
-    quote: string;
-    name: string;
-    title: string;
-  }[];
+  items: Club[];
   direction?: 'left' | 'right';
   speed?: 'fast' | 'normal' | 'slow';
   pauseOnHover?: boolean;
@@ -85,30 +84,19 @@ export const InfiniteMovingCards = ({
           pauseOnHover && 'hover:[animation-play-state:paused]'
         )}
       >
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <li
-            className='relative w-[350px] max-w-full flex-shrink-0 rounded-2xl border border-b-0 border-slate-700 bg-white px-8 py-6 md:w-[450px]'
-            key={item.name}
+            className='relative flex w-[200px] max-w-full flex-shrink-0 flex-row items-center gap-3 bg-white px-8 py-6 md:w-[350px]'
+            key={item.club_id}
           >
-            <blockquote>
-              <div
-                aria-hidden='true'
-                className='user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]'
-              ></div>
-              <span className=' relative z-20 text-sm font-normal leading-[1.6] text-gray-800'>
-                {item.quote}
-              </span>
-              <div className='relative z-20 mt-6 flex flex-row items-center'>
-                <span className='flex flex-col gap-1'>
-                  <span className=' text-sm font-normal leading-[1.6] text-gray-700'>
-                    {item.name}
-                  </span>
-                  <span className=' text-sm font-normal leading-[1.6] text-gray-800'>
-                    {item.title}
-                  </span>
-                </span>
-              </div>
-            </blockquote>
+            <Image
+              src={getImageLink(item.logo_url) ?? BTCLogo.src}
+              alt={`${item.club_name} Logo`}
+              width={48}
+              height={48}
+              className='rounded-full'
+            />
+            <div className='text-xl text-neutral-700'>{item.club_name}</div>
           </li>
         ))}
       </ul>

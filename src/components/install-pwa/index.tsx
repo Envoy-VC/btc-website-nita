@@ -47,7 +47,7 @@ export default function AddToHomeScreen() {
   useEffect(() => {
     const addToHomeScreenButtonCookie = getCookie(COOKIE_NAME);
 
-    if (addToHomeScreenButtonCookie !== 'dontShow') {
+    if (isMobile && addToHomeScreenButtonCookie !== 'dontShow') {
       // Only show prompt if user is on mobile and app is not installed
       if (!isStandalone) {
         if (userAgent === 'Safari') {
@@ -88,13 +88,13 @@ export default function AddToHomeScreen() {
 
   const onClick = async () => {
     if (pwaPrompt) {
-      await pwaPrompt.prompt();
+      void pwaPrompt.prompt();
     }
   };
 
   return (
     <>
-      {displayPrompt !== '' ? (
+      {displayPrompt !== '' && pwaPrompt ? (
         <AddToMobile
           closePrompt={closePrompt}
           doNotShowAgain={doNotShowAgain}

@@ -12,7 +12,7 @@ const Home = () => {
       <div className='hidden lg:flex'>
         <Navbar />
       </div>
-      <div className='py-20 lg:py-0'>
+      <div className='py-[4.4rem] lg:py-0'>
         <Hero />
       </div>
     </div>

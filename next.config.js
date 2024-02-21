@@ -28,6 +28,7 @@ const config = {
 
 const withNextPWA = withPWA({
   dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
 });
 
 // @ts-expect-error error
