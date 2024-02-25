@@ -12,11 +12,9 @@ const Home = () => {
       <div className='hidden lg:flex'>
         <Navbar />
       </div>
-      <div className='py-[4.4rem] lg:py-0'>
-        <Hero />
-        <FeaturedEvents />
-        <Footer />
-      </div>
+      <Hero />
+      <FeaturedEvents />
+      <Footer />
     </div>
   );
 };

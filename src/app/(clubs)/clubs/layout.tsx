@@ -50,7 +50,7 @@ const ClubsLayout = ({ children }: React.PropsWithChildren) => {
         <Navbar />
       </div>
       <MobileNavbar items={homePageItems} />
-      <div className='py-20 lg:py-0'>{children}</div>
+      <div className=''>{children}</div>
     </div>
   );
 };

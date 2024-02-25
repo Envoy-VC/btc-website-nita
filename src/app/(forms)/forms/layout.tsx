@@ -4,6 +4,9 @@ import { Navbar } from '~/components';
 
 import { ChakraProvider } from '@chakra-ui/react';
 
+import MobileNavbar from '~/app/(user)/components/sidebar/mobile';
+import { homePageItems } from '~/lib/data';
+
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -45,8 +48,11 @@ const FormLayout = ({ children }: React.PropsWithChildren) => {
   return (
     <ChakraProvider>
       <div className='flex flex-col'>
-        <Navbar />
-        {children}
+        <div className='hidden lg:flex'>
+          <Navbar />
+        </div>
+        <MobileNavbar items={homePageItems} />
+        <div className=''>{children}</div>
       </div>
     </ChakraProvider>
   );

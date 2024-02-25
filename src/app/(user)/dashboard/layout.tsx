@@ -50,7 +50,7 @@ export default function DashboardLayout({
     <div className='flex flex-col lg:flex-row'>
       <Sidebar items={items} />
       <MobileNavbar items={items} />
-      <div className='mt-16 flex w-full flex-col lg:ml-[16rem] lg:mt-0'>
+      <div className='flex w-full flex-col lg:ml-[16rem]'>
         <DashboardNavbar />
         <div className='px-3 py-6 sm:px-6 sm:py-10 md:px-12 lg:mt-16'>
           {children}

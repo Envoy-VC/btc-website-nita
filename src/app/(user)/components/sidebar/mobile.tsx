@@ -29,7 +29,7 @@ interface Props {
 
 const MobileNavbar = ({ items }: Props) => {
   return (
-    <div className='fixed top-0 z-[10] mb-12 block w-full border-b bg-white px-4 py-3 lg:hidden'>
+    <div className='sticky top-0 z-[30] block w-full border-b bg-white px-4 py-3 lg:hidden'>
       <div className='flex flex-row items-center justify-between gap-2'>
         <div className='flex flex-row items-center gap-2'>
           <Sheet>
