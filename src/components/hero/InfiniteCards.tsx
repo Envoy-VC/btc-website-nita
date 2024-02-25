@@ -86,7 +86,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item) => (
           <li
-            className='relative flex w-[200px] max-w-full flex-shrink-0 flex-row items-center gap-3 bg-white px-8 py-6 md:w-[350px]'
+            className='relative flex flex-row items-center gap-3 bg-white px-8 py-6'
             key={item.club_id}
           >
             <Image
@@ -96,7 +96,9 @@ export const InfiniteMovingCards = ({
               height={48}
               className='rounded-full'
             />
-            <div className='text-xl text-neutral-700'>{item.club_name}</div>
+            <span className='flex w-full max-w-xs flex-wrap text-wrap text-xl text-neutral-700 sm:max-w-sm md:max-w-md'>
+              {item.club_name}
+            </span>
           </li>
         ))}
       </ul>
