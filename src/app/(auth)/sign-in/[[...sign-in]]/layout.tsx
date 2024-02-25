@@ -34,6 +34,8 @@ export const metadata: Metadata = {
         url: '/api/og?title=⚡ Get Started',
         width: 1200,
         height: 630,
+        type: 'image/png',
+        alt: 'Get Started',
       },
     ],
   },
