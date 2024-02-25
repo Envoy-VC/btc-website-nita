@@ -10,6 +10,8 @@ import {
   FaLinkedin,
 } from 'react-icons/fa6';
 
+import { LuBinary } from 'react-icons/lu';
+
 const Footer = () => {
   return (
     <footer className='bg-white'>
@@ -51,29 +53,31 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className='flex flex-col justify-end gap-8 text-center lg:grid-cols-3 lg:flex-row lg:text-left'>
-            <div>
-              <strong className='font-medium text-gray-900'>Navigation</strong>
+          <div className='flex flex-col justify-end gap-8 text-center lg:flex-row lg:text-left'>
+            <div className='flex flex-row items-center justify-center gap-8'>
+              <div>
+                <strong className='font-medium text-gray-900'>
+                  Navigation
+                </strong>
+                <ul className='mt-6 space-y-1'>
+                  {navigationItems.map((item, index) => (
+                    <li key={index}>
+                      <Item {...item} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <ul className='mt-6 space-y-1'>
-                {navigationItems.map((item, index) => (
-                  <li key={index}>
-                    <Item {...item} />
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <strong className='font-medium text-gray-900'>About</strong>
-
-              <ul className='mt-6 space-y-1'>
-                {aboutItems.map((item, index) => (
-                  <li key={index}>
-                    <Item {...item} />
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <strong className='font-medium text-gray-900'>About</strong>
+                <ul className='mt-6 space-y-1'>
+                  {aboutItems.map((item, index) => (
+                    <li key={index}>
+                      <Item {...item} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -83,19 +87,15 @@ const Footer = () => {
             © Gymkhana Technical {new Date().getFullYear()}. All rights
             reserved.
             <br />
-            Created by{' '}
+            Created with <LuBinary className='inline' /> by{' '}
             <Link
               href='https://envoy1084.xyz'
               target='_blank'
               rel='noreferrer'
-              className='text-gray-700 underline transition hover:text-gray-700/75'
+              className='text-black transition hover:text-black/80'
             >
               Envoy_
             </Link>{' '}
-            with{' '}
-            <span className='text-gray-700 underline transition hover:text-gray-700/75'>
-              Next.js
-            </span>
           </p>
         </div>
       </div>
