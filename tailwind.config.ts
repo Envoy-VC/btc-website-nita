@@ -30,6 +30,9 @@ const config = {
         light: '#BBE1FA',
         text: '#1B262C',
       },
+      screens: {
+        xxs: '375px',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

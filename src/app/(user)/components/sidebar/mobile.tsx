@@ -9,6 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
+  SheetClose,
 } from '~/components/ui/sheet';
 import { Separator } from '~/components/ui/separator';
 import { Button } from '~/components/ui/button';
@@ -22,6 +23,8 @@ import Link from 'next/link';
 
 import type { SideNavItem } from '~/types';
 import AddToHomeScreen from '~/components/install-pwa';
+
+import { HiOutlineX } from 'react-icons/hi';
 
 interface Props {
   items: SideNavItem[];
@@ -41,7 +44,7 @@ const MobileNavbar = ({ items }: Props) => {
             </SheetTrigger>
             <SheetContent side='left' className='px-3'>
               <SheetHeader>
-                <SheetTitle>
+                <SheetTitle className='flex flex-row items-center justify-between gap-2'>
                   <div className='flex flex-row gap-2'>
                     <Image
                       src={BTCLogo.src}
@@ -50,10 +53,14 @@ const MobileNavbar = ({ items }: Props) => {
                       height={30}
                       className='rounded-full'
                     />
-                    <span className='text-lg font-semibold text-neutral-700'>
+                    <span className='xxs:block hidden text-lg font-semibold text-neutral-700'>
                       Gymkhana Technical
                     </span>
                   </div>
+                  <SheetClose className='rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-transparent focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100 dark:ring-offset-neutral-950 dark:focus:ring-neutral-300 dark:data-[state=open]:bg-neutral-800'>
+                    <HiOutlineX className='text-xl' />
+                    <span className='sr-only'>Close</span>
+                  </SheetClose>
                 </SheetTitle>
               </SheetHeader>
               <div className='py-4'>
